@@ -113,10 +113,19 @@ PrefabInstance:
       propertyPath: m_Name
       value: Banana
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: fc5487d903b42474a81849b08f3012c3,
+        type: 3}
+      propertyPath: m_TagString
+      value: Fruit
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: fc5487d903b42474a81849b08f3012c3,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: -9177502213429176949}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: fc5487d903b42474a81849b08f3012c3,
         type: 3}
       insertIndex: -1
@@ -136,6 +145,19 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 6812970612500844565}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &-9177502213429176949
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5930644211358821700}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68f00b201b49eec4abdf4f7ee32a2725, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  data: {fileID: 11400000, guid: 2c03329e66385be4e9092dcc584a979a, type: 2}
 --- !u!65 &8281805659558656156
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -167,7 +189,7 @@ Rigidbody:
   serializedVersion: 4
   m_Mass: 1
   m_Drag: 0
-  m_AngularDrag: 0.05
+  m_AngularDrag: 3
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
   m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}

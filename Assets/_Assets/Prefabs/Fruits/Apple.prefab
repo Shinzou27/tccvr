@@ -88,10 +88,19 @@ PrefabInstance:
       propertyPath: m_Name
       value: Apple
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 8fea4394cfbaa9441b1bd3c6775e66e8,
+        type: 3}
+      propertyPath: m_TagString
+      value: Fruit
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 8fea4394cfbaa9441b1bd3c6775e66e8,
+        type: 3}
+      insertIndex: 1
+      addedObject: {fileID: 5346359461045779418}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 8fea4394cfbaa9441b1bd3c6775e66e8,
         type: 3}
       insertIndex: -1
@@ -111,6 +120,19 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 4298686168181336997}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &5346359461045779418
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3992838656990140148}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68f00b201b49eec4abdf4f7ee32a2725, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  data: {fileID: 11400000, guid: ae4b15d216606dd4aa53e7dc1a00ea66, type: 2}
 --- !u!135 &7211531910457092058
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -142,7 +164,7 @@ Rigidbody:
   serializedVersion: 4
   m_Mass: 1
   m_Drag: 0
-  m_AngularDrag: 0.05
+  m_AngularDrag: 3
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
   m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
