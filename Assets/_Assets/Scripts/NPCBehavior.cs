@@ -45,16 +45,15 @@ public class NPCBehavior : MonoBehaviour
     }
     public void LeaveTend(object sender, bool correctOrder)
     {
+        agent.destination = defaultDestination.position;
         if (correctOrder) animationStateHandler.OrderCorrect(() =>
         {
             agent.isStopped = false;
-            agent.destination = defaultDestination.position;
 
         });
         else animationStateHandler.OrderIncorrect(() =>
         {
             agent.isStopped = false;
-            agent.destination = defaultDestination.position;
 
         });
     }

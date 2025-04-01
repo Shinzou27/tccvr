@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 810983535234036518}
   - component: {fileID: 1134930016444174088}
   - component: {fileID: 4170159193813363759}
+  - component: {fileID: 8190046173121790302}
   m_Layer: 0
   m_Name: Box 4
   m_TagString: Untagged
@@ -83,3 +84,18 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &8190046173121790302
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7412142490292933533}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15ae0b86b84a0924983d0571bc56373d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fruitToSpawn: {fileID: 0}
+  amount: 0
+  pivot: {fileID: 0}

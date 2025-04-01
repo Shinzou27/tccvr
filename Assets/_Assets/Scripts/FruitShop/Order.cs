@@ -29,6 +29,7 @@ public class Order
             Debug.Log("Não tenho essa fruta no order set");
             list.Add(new OrderSet(fruit, 1));
         }
+        amountOnOrder++;
     }
     public OrderSet GetOrderSet(FruitType fruit) {
         foreach (OrderSet order in list) {
