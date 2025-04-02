@@ -7,6 +7,7 @@ using UnityEngine.AI;
 public class NPCBehavior : MonoBehaviour
 {
     [SerializeField] private Transform tend;
+    [SerializeField] private Transform tendInterestPivot;
     [SerializeField] private Transform defaultDestination;
     [SerializeField] private NPCAnimationStateHandler animationStateHandler;
     [SerializeField] private GameObject orderUI;
@@ -32,7 +33,9 @@ public class NPCBehavior : MonoBehaviour
             orderUI.SetActive(true);
             EventManager.Instance.OnCustomerEnter?.Invoke(this, EventArgs.Empty);
         }
-        if (!turned && Vector3.Angle(transform.position, tend.position) < 5) {
+        Debug.Log(Vector3.Distance(transform.position, tendInterestPivot.position));
+        if (!turned && Vector3.Distance(transform.position, tendInterestPivot.position) < 1) {
+            Debug.Log("Indo para a tenda");
             ChangeDestination(-1);
             turned = true;
         }
