@@ -5,9 +5,12 @@ public static class Utils
 {
   public static int[] GenerateRandomFruitAmountDivisions(int totalAmount, int differentFruitsCount)
   {
-    if (differentFruitsCount <= 0) throw new ArgumentException("Invalid fruit types count", nameof(differentFruitsCount));
-    if (totalAmount < differentFruitsCount) throw new ArgumentException("Total amount cannot be less than types count", nameof(totalAmount));
-    if (totalAmount == differentFruitsCount) return Enumerable.Repeat(1, differentFruitsCount).ToArray();
+    if (differentFruitsCount <= 0) differentFruitsCount = 1;
+
+    if (totalAmount < differentFruitsCount) totalAmount = differentFruitsCount;
+
+    if (totalAmount == differentFruitsCount)
+      return Enumerable.Repeat(1, differentFruitsCount).ToArray();
 
     Random rnd = new();
     int[] divisions = new int[differentFruitsCount];
@@ -21,6 +24,7 @@ public static class Utils
     }
     return divisions;
   }
+
   public static void Shuffle<T>(this IList<T> list)
   {
     Random rng = new();

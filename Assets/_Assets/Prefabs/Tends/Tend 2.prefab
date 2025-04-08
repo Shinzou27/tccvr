@@ -260,7 +260,7 @@ GameObject:
   - component: {fileID: 5007524330789567811}
   m_Layer: 0
   m_Name: Tend 2
-  m_TagString: Untagged
+  m_TagString: Tend
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
