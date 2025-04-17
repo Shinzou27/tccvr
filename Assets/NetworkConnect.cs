@@ -26,7 +26,7 @@ public class NetworkConnect : MonoBehaviour
     if (heartBeatTimer > 15) {
       heartBeatTimer -= 15;
       if (currentLobby != null && currentLobby.HostId == AuthenticationService.Instance.PlayerId) {
-        LobbyService.Instance.SendHeartbeatPingAsync(currentLobby.HostId);
+        LobbyService.Instance.SendHeartbeatPingAsync(currentLobby.Id);
       }
     }
     heartBeatTimer += Time.deltaTime;

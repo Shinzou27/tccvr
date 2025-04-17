@@ -23,8 +23,8 @@ public class NetworkPlayer : NetworkBehaviour
       foreach (var mesh in meshToDisable) {
           mesh.enabled = false;
       }
-      TendSpawner.Instance.RequestSpawnTent(playerNumber);
       EventManager.Instance.OnPlayerEnter?.Invoke(this, playerNumber);
+      TendSpawner.Instance.RequestSpawnTent(playerNumber);
     }
   }
 

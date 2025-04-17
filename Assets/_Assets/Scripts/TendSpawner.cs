@@ -23,6 +23,11 @@ public class TendSpawner : NetworkBehaviour
 
   public void RequestSpawnTent(int playerNumber)
   {
+    StartCoroutine(WaitToSpawn(playerNumber));
+  }
+
+  private IEnumerator WaitToSpawn(int playerNumber) {
+    yield return new WaitForSeconds(1);
     if (IsServer)
     {
       SpawnTent(playerNumber);
@@ -31,6 +36,7 @@ public class TendSpawner : NetworkBehaviour
     {
       SpawnTentServerRpc(playerNumber);
     }
+
   }
 
   [ServerRpc(RequireOwnership = false)]
