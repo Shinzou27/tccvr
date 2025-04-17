@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -13,9 +14,17 @@ public class VRRigRereferences : MonoBehaviour
         if (Singleton == null) Singleton = this;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+  void Start()
+  {
+    EventManager.Instance.OnPlayerEnter += SetPosition;
+  }
+  void OnDestroy()
+  {
+    EventManager.Instance.OnPlayerEnter -= SetPosition;
+  }
+
+  private void SetPosition(object sender, int e)
+  {
+    transform.position = Utils.GetSpawnTransform(e, 16);
+  }
 }

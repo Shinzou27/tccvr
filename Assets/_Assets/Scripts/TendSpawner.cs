@@ -1,28 +1,51 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Netcode;
+using Unity.VisualScripting;
 using UnityEngine;
 
-public class TendSpawner : MonoBehaviour
+public class TendSpawner : NetworkBehaviour
 {
-    [SerializeField] private List<GameObject> prefabs;
-    public int players;
-
-    void Start()
+  [SerializeField] private List<GameObject> prefabs;
+  public int players = 16;
+  public static TendSpawner Instance;
+  void Awake()
+  {
+    if (Instance == null)
     {
-        int pairCount = (players + 1) / 2;
-        float offset = (pairCount - 1) * 1.5f;
-        int pairIndex = 0;
-
-        for (int i = 0; i < players; i++)
-        {
-            float x = (pairIndex * 3) - offset;
-            float z = (i % 2 == 0) ? 5 : -5;
-            Quaternion quaternion = Quaternion.Euler(0, (i % 2 == 0) ? 0 : 180, 0);
-            Vector3 spawnPos = new(x, 0, z);
-            Instantiate(prefabs[Random.Range(0, prefabs.Count)], spawnPos, quaternion);
-
-            if (i % 2 == 1)
-                pairIndex++;
-        }
+      Instance = this;
     }
+    else
+    {
+      Destroy(gameObject);
+    }
+  }
+
+  public void RequestSpawnTent(int playerNumber)
+  {
+    if (IsServer)
+    {
+      SpawnTent(playerNumber);
+    }
+    else
+    {
+      SpawnTentServerRpc(playerNumber);
+    }
+  }
+
+  [ServerRpc(RequireOwnership = false)]
+  private void SpawnTentServerRpc(int playerNumber)
+  {
+    Debug.LogError("Sou client e quero instanciar uma tenda.");
+    SpawnTent(playerNumber);
+  }
+
+  private void SpawnTent(int playerNumber)
+  {
+    Vector3 position = Utils.GetSpawnTransform(playerNumber, 16);
+    Quaternion rotation = Quaternion.Euler(0, (playerNumber % 2 == 0) ? 0 : 180, 0);
+    GameObject tent = Instantiate(prefabs[Random.Range(0, prefabs.Count)], position, rotation);
+    NetworkObject networkObject = tent.GetComponent<NetworkObject>();
+    networkObject.Spawn();
+  }
 }

@@ -1,8 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Netcode;
 using UnityEngine;
 
-public class SpawnFruitsOnBox : MonoBehaviour
+public class SpawnFruitsOnBox : NetworkBehaviour
 {
     [SerializeField] private FruitSO fruitToSpawn;
     [SerializeField] private int amount;

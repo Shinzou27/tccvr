@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Fruit
   - Tend
+  - NetworkPlayer
   layers:
   - Default
   - TransparentFX

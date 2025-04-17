@@ -1312,7 +1312,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 2.18
-  m_Speed: 2
+  m_Speed: 1.4
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
@@ -1336,9 +1336,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bff84c05e4e5206479bd25f1819952a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tend: {fileID: 0}
-  tendInterestPivot: {fileID: 0}
-  defaultDestination: {fileID: 0}
   animationStateHandler: {fileID: 4621603312761691993}
   orderUI: {fileID: 591572718206669948}
 --- !u!1 &5417007224999005881

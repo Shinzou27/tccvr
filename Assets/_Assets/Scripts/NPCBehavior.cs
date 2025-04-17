@@ -27,8 +27,9 @@ public class NPCBehavior : MonoBehaviour
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.D)) ChangeDestination(1, tends[0]);
-        if (agent.remainingDistance <= 1.5f && !agent.isStopped && !reachedTend)
+        if (agent.remainingDistance <= 1.5f && !agent.isStopped && !reachedTend && turned)
         {
+            Debug.Log("Cheguei na tenda");
             if (agent.destination == defaultDestination.position) {
                 OnDestroyBehavior();
                 Destroy(gameObject);

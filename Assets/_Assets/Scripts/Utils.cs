@@ -1,8 +1,10 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using UnityEngine;
 public static class Utils
 {
+  public static bool isHost;
   public static int[] GenerateRandomFruitAmountDivisions(int totalAmount, int differentFruitsCount)
   {
     if (differentFruitsCount <= 0) differentFruitsCount = 1;
@@ -12,7 +14,7 @@ public static class Utils
     if (totalAmount == differentFruitsCount)
       return Enumerable.Repeat(1, differentFruitsCount).ToArray();
 
-    Random rnd = new();
+    System.Random rnd = new();
     int[] divisions = new int[differentFruitsCount];
     for (int i = 0; i < differentFruitsCount; i++) divisions[i] = 1;
     int remaining = totalAmount - differentFruitsCount;
@@ -27,7 +29,7 @@ public static class Utils
 
   public static void Shuffle<T>(this IList<T> list)
   {
-    Random rng = new();
+    System.Random rng = new();
     int n = list.Count;
     while (n > 1)
     {
@@ -59,5 +61,21 @@ public static class Utils
     string last = parts.Last();
     string joined = string.Join(", ", parts.Take(parts.Count - 1));
     return $"{joined} and {last}";
+  }
+  public static int GetPlayersActive()
+  {
+    return GameObject.FindGameObjectsWithTag("NetworkPlayer").Length;
+  }
+  public static Vector3 GetSpawnTransform(int i, int players)
+  {
+    int pairCount = (players + 1) / 2;
+    float offset = (pairCount - 1) * 1.5f;
+    int pairIndex = i / 2;
+
+    float x = (pairIndex * 3) - offset;
+    float z = (i % 2 == 0) ? 6.5f : -6.5f;
+    Vector3 position = new(x, 0, z);
+
+    return position;
   }
 }
