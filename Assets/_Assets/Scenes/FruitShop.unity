@@ -731,7 +731,6 @@ GameObject:
   - component: {fileID: 49173841}
   - component: {fileID: 49173843}
   - component: {fileID: 49173845}
-  - component: {fileID: 49173846}
   m_Layer: 0
   m_Name: <<< FruitShopManager >>>
   m_TagString: Untagged
@@ -770,10 +769,11 @@ MonoBehaviour:
   - {fileID: 11400000, guid: ae4b15d216606dd4aa53e7dc1a00ea66, type: 2}
   - {fileID: 11400000, guid: 2c03329e66385be4e9092dcc584a979a, type: 2}
   - {fileID: 11400000, guid: 5db444369c78f0641aa9da9b16232832, type: 2}
+  - {fileID: 11400000, guid: 645523f05dc92ae439129fe6b8c4cf93, type: 2}
   maxUniqueFruits: 3
   maxFruitAmount: 6
   rounds: 3
-  interestRate: 0.02
+  interestRate: 0.1
   currentOrder:
     list: []
     amountOnOrder: 0
@@ -794,25 +794,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4dc3ac53654a8304f844461bdb8c4969, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &49173846
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 49173840}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7e15d2069214a9941bdf90da58d1d74e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  prefabs:
-  - {fileID: 5358671611973272012, guid: e6ea20a59d908814a9a5f608c9ec197a, type: 3}
-  maxCount: 5
-  defaultDestinationLeft: {fileID: 747004393}
-  defaultDestinationRight: {fileID: 1225440643}
-  spawnInterval: 3
-  spawnTimeElapsed: 0
 --- !u!1 &50096768
 GameObject:
   m_ObjectHideFlags: 0
@@ -1112,7 +1093,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!64 &63837567
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -4432,6 +4413,79 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 349322980}
   m_Mesh: {fileID: 7843358644560398024, guid: 4b0d29a42bc4c8246aebf70b5a4412a2, type: 3}
+--- !u!1 &352589605
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 352589608}
+  - component: {fileID: 352589606}
+  - component: {fileID: 352589607}
+  m_Layer: 0
+  m_Name: NPCSpawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &352589606
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 352589605}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GlobalObjectIdHash: 340896166
+  InScenePlacedSourceGlobalObjectIdHash: 0
+  AlwaysReplicateAsRoot: 0
+  SynchronizeTransform: 1
+  ActiveSceneSynchronization: 0
+  SceneMigrationSynchronization: 1
+  SpawnWithObservers: 1
+  DontDestroyWithOwner: 0
+  AutoObjectParentSync: 1
+--- !u!114 &352589607
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 352589605}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e15d2069214a9941bdf90da58d1d74e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefabs:
+  - {fileID: 5358671611973272012, guid: e6ea20a59d908814a9a5f608c9ec197a, type: 3}
+  maxCount: 5
+  defaultDestinationLeft: {fileID: 747004393}
+  defaultDestinationRight: {fileID: 1225440643}
+  spawnInterval: 3
+  spawnTimeElapsed: 0
+--- !u!4 &352589608
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 352589605}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &355144933 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1277767589705329894, guid: adbb0a55ff7411d4e995818b82c0777b,
@@ -7122,7 +7176,7 @@ GameObject:
   - component: {fileID: 588832018}
   - component: {fileID: 588832017}
   m_Layer: 0
-  m_Name: Plane
+  m_Name: Nav Mesh Surface
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7157,7 +7211,7 @@ MonoBehaviour:
   m_OverrideVoxelSize: 0
   m_VoxelSize: 0.16666667
   m_MinRegionArea: 2
-  m_NavMeshData: {fileID: 23800000, guid: 7a9a4f9e3cf95804194a4cb0330b53ac, type: 2}
+  m_NavMeshData: {fileID: 23800000, guid: 4972571615f7b824bb08770d21b2f987, type: 2}
   m_BuildHeightMesh: 0
 --- !u!64 &588832018
 MeshCollider:
@@ -7176,7 +7230,7 @@ MeshCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 5
   m_Convex: 0
   m_CookingOptions: 30
@@ -7264,7 +7318,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!64 &591314769
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -11703,6 +11757,77 @@ Transform:
   - {fileID: 1722370926}
   m_Father: {fileID: 468050923}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &934654467
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 934654469}
+  - component: {fileID: 934654468}
+  - component: {fileID: 934654470}
+  m_Layer: 0
+  m_Name: FruitSpawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &934654468
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 934654467}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GlobalObjectIdHash: 3998358400
+  InScenePlacedSourceGlobalObjectIdHash: 0
+  AlwaysReplicateAsRoot: 0
+  SynchronizeTransform: 1
+  ActiveSceneSynchronization: 0
+  SceneMigrationSynchronization: 1
+  SpawnWithObservers: 1
+  DontDestroyWithOwner: 0
+  AutoObjectParentSync: 1
+--- !u!4 &934654469
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 934654467}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &934654470
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 934654467}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8de1bb87573e0a94a856deedf5179783, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fruits:
+  - {fileID: 11400000, guid: ae4b15d216606dd4aa53e7dc1a00ea66, type: 2}
+  - {fileID: 11400000, guid: 2c03329e66385be4e9092dcc584a979a, type: 2}
+  - {fileID: 11400000, guid: 5db444369c78f0641aa9da9b16232832, type: 2}
+  - {fileID: 11400000, guid: 645523f05dc92ae439129fe6b8c4cf93, type: 2}
 --- !u!1001 &938684619
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -26492,13 +26617,15 @@ SceneRoots:
   m_Roots:
   - {fileID: 49173841}
   - {fileID: 1020347103}
+  - {fileID: 352589608}
+  - {fileID: 934654469}
   - {fileID: 43579310}
   - {fileID: 178872122}
   - {fileID: 1225440643}
   - {fileID: 747004393}
   - {fileID: 1742021466}
-  - {fileID: 1028452935}
   - {fileID: 63837570}
   - {fileID: 591314772}
   - {fileID: 198180128}
   - {fileID: 588832021}
+  - {fileID: 1028452935}

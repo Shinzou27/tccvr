@@ -12,6 +12,11 @@ GameObject:
   - component: {fileID: 1134930016444174088}
   - component: {fileID: 4170159193813363759}
   - component: {fileID: 8190046173121790302}
+  - component: {fileID: 8721586499410590031}
+  - component: {fileID: 537805675990896132}
+  - component: {fileID: 6124111981904866474}
+  - component: {fileID: 4686071163980328181}
+  - component: {fileID: 7025356667186722023}
   m_Layer: 0
   m_Name: Box 4
   m_TagString: Untagged
@@ -31,7 +36,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 100, y: 100, z: 100}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 5471856193205778455}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &1134930016444174088
@@ -96,6 +102,142 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15ae0b86b84a0924983d0571bc56373d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fruitToSpawn: {fileID: 0}
-  amount: 0
-  pivot: {fileID: 0}
+  fruitToSpawn: {fileID: 11400000, guid: ae4b15d216606dd4aa53e7dc1a00ea66, type: 2}
+  amount: 5
+  pivot: {fileID: 5471856193205778455}
+--- !u!65 &8721586499410590031
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7412142490292933533}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.0039999997, y: 0.0050301473, z: 0.00022207263}
+  m_Center: {x: -1.4901161e-10, y: -1.225375e-19, z: 0.00011103721}
+--- !u!65 &537805675990896132
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7412142490292933533}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.0005886553, y: 0.0050301473, z: 0.003036755}
+  m_Center: {x: -0.001705669, y: 9.061946e-19, z: 0.0015183775}
+--- !u!65 &6124111981904866474
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7412142490292933533}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.0005886553, y: 0.0050301473, z: 0.003036755}
+  m_Center: {x: 0.0017056694, y: 9.061946e-19, z: 0.0015183775}
+--- !u!65 &4686071163980328181
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7412142490292933533}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.0039999997, y: 0.00031186154, z: 0.0030367547}
+  m_Center: {x: -1.4901161e-10, y: 0.0023591495, z: 0.0015183778}
+--- !u!65 &7025356667186722023
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7412142490292933533}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.0039999997, y: 0.00031186154, z: 0.0030367547}
+  m_Center: {x: -1.4901161e-10, y: -0.00235915, z: 0.0015183778}
+--- !u!1 &8958280986082153678
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5471856193205778455}
+  m_Layer: 0
+  m_Name: SpawnFruitPivot
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5471856193205778455
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8958280986082153678}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -0, z: 0.00135}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 810983535234036518}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

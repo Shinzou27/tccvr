@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Unity.Netcode;
 using UnityEngine;
 
-public class SpawnFruitsOnBox : NetworkBehaviour
+public class SpawnFruitsOnBox : MonoBehaviour
 {
     [SerializeField] private FruitSO fruitToSpawn;
     [SerializeField] private int amount;
@@ -12,9 +12,6 @@ public class SpawnFruitsOnBox : NetworkBehaviour
         Spawn();
     }
     private void Spawn() {
-        ;
-        for (int i = 0; i < amount; i++) {
-            Instantiate(fruitToSpawn.prefab, pivot.position, Quaternion.Euler(new(Random.Range(0, 360), Random.Range(0, 360), Random.Range(0, 360))));
-        }
+        FruitSpawner.Instance.RequestSpawnFruit(pivot, fruitToSpawn, amount);
     }
 }

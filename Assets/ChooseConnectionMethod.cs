@@ -13,10 +13,10 @@ public class ChooseConnectionMethod : MonoBehaviour
   }
   public void ChooseHost() {
         Utils.isHost = true;
-        SceneManager.LoadScene("FruitShop");
+        SceneManager.LoadSceneAsync("FruitShop");
     }
     public void ChooseClient() {
         Utils.isHost = false;
-        SceneManager.LoadScene("FruitShop");
+        SceneManager.LoadSceneAsync("FruitShop");
     }
 }

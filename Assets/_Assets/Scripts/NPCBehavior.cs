@@ -2,10 +2,11 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Unity.Netcode;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class NPCBehavior : MonoBehaviour
+public class NPCBehavior : NetworkBehaviour
 {
     private List<Transform> tends;
     private Transform defaultDestination;
@@ -20,13 +21,13 @@ public class NPCBehavior : MonoBehaviour
     {
         orderUI.SetActive(false);
         agent = GetComponent<NavMeshAgent>();
-        agent.destination = defaultDestination.position;
         EventManager.Instance.OnOrderDone += LeaveTend;
         tends = new(GameObject.FindGameObjectsWithTag("Tend").Select((go) => go.transform));
     }
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.D)) ChangeDestination(1, tends[0]);
+        Debug.Log(agent.remainingDistance);
         if (agent.remainingDistance <= 1.5f && !agent.isStopped && !reachedTend && turned)
         {
             Debug.Log("Cheguei na tenda");
