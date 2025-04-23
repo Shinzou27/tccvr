@@ -4413,79 +4413,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 349322980}
   m_Mesh: {fileID: 7843358644560398024, guid: 4b0d29a42bc4c8246aebf70b5a4412a2, type: 3}
---- !u!1 &352589605
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 352589608}
-  - component: {fileID: 352589606}
-  - component: {fileID: 352589607}
-  m_Layer: 0
-  m_Name: NPCSpawner
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &352589606
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 352589605}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  GlobalObjectIdHash: 340896166
-  InScenePlacedSourceGlobalObjectIdHash: 0
-  AlwaysReplicateAsRoot: 0
-  SynchronizeTransform: 1
-  ActiveSceneSynchronization: 0
-  SceneMigrationSynchronization: 1
-  SpawnWithObservers: 1
-  DontDestroyWithOwner: 0
-  AutoObjectParentSync: 1
---- !u!114 &352589607
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 352589605}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7e15d2069214a9941bdf90da58d1d74e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  prefabs:
-  - {fileID: 5358671611973272012, guid: e6ea20a59d908814a9a5f608c9ec197a, type: 3}
-  maxCount: 5
-  defaultDestinationLeft: {fileID: 747004393}
-  defaultDestinationRight: {fileID: 1225440643}
-  spawnInterval: 3
-  spawnTimeElapsed: 0
---- !u!4 &352589608
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 352589605}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &355144933 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1277767589705329894, guid: adbb0a55ff7411d4e995818b82c0777b,
@@ -13137,6 +13064,7 @@ GameObject:
   - component: {fileID: 1020347103}
   - component: {fileID: 1020347101}
   - component: {fileID: 1020347102}
+  - component: {fileID: 1020347104}
   m_Layer: 0
   m_Name: TendSpawner
   m_TagString: Untagged
@@ -13197,6 +13125,24 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1020347104
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1020347100}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e15d2069214a9941bdf90da58d1d74e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefabs:
+  - {fileID: 5358671611973272012, guid: e6ea20a59d908814a9a5f608c9ec197a, type: 3}
+  maxCount: 5
+  defaultDestinationLeft: {fileID: 747004393}
+  defaultDestinationRight: {fileID: 1225440643}
+  spawnInterval: 3
 --- !u!1 &1027676222
 GameObject:
   m_ObjectHideFlags: 0
@@ -26617,7 +26563,6 @@ SceneRoots:
   m_Roots:
   - {fileID: 49173841}
   - {fileID: 1020347103}
-  - {fileID: 352589608}
   - {fileID: 934654469}
   - {fileID: 43579310}
   - {fileID: 178872122}

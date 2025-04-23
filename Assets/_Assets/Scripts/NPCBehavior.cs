@@ -17,17 +17,21 @@ public class NPCBehavior : NetworkBehaviour
     private bool reachedTend = false;
     public Action OnDestroyBehavior;
     // Start is called before the first frame update
+    private void SetAgent() {
+        if (agent == null) {
+            agent = GetComponent<NavMeshAgent>();
+        }
+    }
     void Start()
     {
         orderUI.SetActive(false);
-        agent = GetComponent<NavMeshAgent>();
+        SetAgent();
         EventManager.Instance.OnOrderDone += LeaveTend;
         tends = new(GameObject.FindGameObjectsWithTag("Tend").Select((go) => go.transform));
     }
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.D)) ChangeDestination(1, tends[0]);
-        Debug.Log(agent.remainingDistance);
         if (agent.remainingDistance <= 1.5f && !agent.isStopped && !reachedTend && turned)
         {
             Debug.Log("Cheguei na tenda");
@@ -58,6 +62,8 @@ public class NPCBehavior : NetworkBehaviour
     }
     public void SetDefaultDestination(Transform destination) {
         defaultDestination = destination;
+        SetAgent();
+        agent.destination = defaultDestination.position;
     }
     public void ChangeDestination(float dir, Transform tendToGo)
     {
