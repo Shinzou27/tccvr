@@ -260,6 +260,7 @@ GameObject:
   - component: {fileID: 5007524330789567811}
   - component: {fileID: 5477217774799875184}
   - component: {fileID: 902455371787591399}
+  - component: {fileID: 5827054633766131996}
   m_Layer: 0
   m_Name: Tend 2
   m_TagString: Tend
@@ -280,6 +281,8 @@ Transform:
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 1
   m_Children:
+  - {fileID: 7509871698763535701}
+  - {fileID: 424770869750904813}
   - {fileID: 999644052862675899}
   - {fileID: 4147221696060958507}
   - {fileID: 3275781842913028949}
@@ -359,6 +362,21 @@ NavMeshObstacle:
   m_CarveOnlyStationary: 1
   m_Center: {x: 0, y: 0, z: 0}
   m_TimeToStationary: 0.5
+--- !u!114 &5827054633766131996
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 811935944534537132}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e7d61ff3c81137644859d558af97ada5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _transform: {fileID: 7509871698763535701}
+  npcStopPoint: {fileID: 424770869750904813}
+  direction: 0
 --- !u!1 &1370212405386092515
 GameObject:
   m_ObjectHideFlags: 0
@@ -620,6 +638,7 @@ GameObject:
   - component: {fileID: 6888235767190058179}
   - component: {fileID: 31792702759623431}
   - component: {fileID: 1330734734514741329}
+  - component: {fileID: 1510777277068136928}
   m_Layer: 0
   m_Name: polySurface651
   m_TagString: Untagged
@@ -694,6 +713,27 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &1510777277068136928
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1767950055412956423}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.010411663, y: 0.009004867, z: 0.010076065}
+  m_Center: {x: 0, y: -0.0044453666, z: 0}
 --- !u!1 &1849738621793171087
 GameObject:
   m_ObjectHideFlags: 0
@@ -705,6 +745,7 @@ GameObject:
   - component: {fileID: 8171066295377018376}
   - component: {fileID: 2434316191305408021}
   - component: {fileID: 8623891185314736852}
+  - component: {fileID: 8574957946597798142}
   m_Layer: 0
   m_Name: polySurface650
   m_TagString: Untagged
@@ -779,6 +820,58 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &8574957946597798142
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1849738621793171087}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.010411663, y: 0.009004867, z: 0.010076065}
+  m_Center: {x: 0, y: -0.0044453666, z: 0}
+--- !u!1 &1993985346196181707
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 424770869750904813}
+  m_Layer: 0
+  m_Name: NPCStopPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &424770869750904813
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1993985346196181707}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -3.75}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5007524330789567811}
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!1 &2106097133109743644
 GameObject:
   m_ObjectHideFlags: 0
@@ -1700,6 +1793,37 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1 &5026308670675568842
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7509871698763535701}
+  m_Layer: 0
+  m_Name: PlayerSpawnPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7509871698763535701
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5026308670675568842}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5007524330789567811}
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!1 &5802993998161103580
 GameObject:
   m_ObjectHideFlags: 0
@@ -2465,6 +2589,7 @@ GameObject:
   - component: {fileID: 663768413317183225}
   - component: {fileID: 9194510853962133459}
   - component: {fileID: 973424345010528767}
+  - component: {fileID: 4973196463857462499}
   m_Layer: 0
   m_Name: polySurface523
   m_TagString: Untagged
@@ -2537,6 +2662,27 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &4973196463857462499
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7250354200034074479}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.045937996, y: 0.0011557674, z: 0.007919883}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &7886257296497550363
 GameObject:
   m_ObjectHideFlags: 0

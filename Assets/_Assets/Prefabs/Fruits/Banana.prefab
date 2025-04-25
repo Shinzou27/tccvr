@@ -127,6 +127,10 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: fc5487d903b42474a81849b08f3012c3,
         type: 3}
       insertIndex: -1
+      addedObject: {fileID: 8200314067784926133}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: fc5487d903b42474a81849b08f3012c3,
+        type: 3}
+      insertIndex: -1
       addedObject: {fileID: -9177502213429176949}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: fc5487d903b42474a81849b08f3012c3,
         type: 3}
@@ -155,6 +159,18 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 6812970612500844565}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &8200314067784926133
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5930644211358821700}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b10d6693b10335042a201f52a857e01e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &-9177502213429176949
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -215,7 +231,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 2
 --- !u!114 &3250253242167036347
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -388,7 +404,7 @@ MonoBehaviour:
   SceneMigrationSynchronization: 1
   SpawnWithObservers: 1
   DontDestroyWithOwner: 0
-  AutoObjectParentSync: 1
+  AutoObjectParentSync: 0
 --- !u!114 &-8725220240938596465
 MonoBehaviour:
   m_ObjectHideFlags: 0

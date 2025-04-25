@@ -23,8 +23,8 @@ public class VRRigRereferences : MonoBehaviour
     EventManager.Instance.OnPlayerEnter -= SetPosition;
   }
 
-  private void SetPosition(object sender, int e)
+  private void SetPosition(object sender, Transform e)
   {
-    transform.position = Utils.GetSpawnTransform(e, 16);
+    transform.SetPositionAndRotation(e.position, e.rotation);
   }
 }

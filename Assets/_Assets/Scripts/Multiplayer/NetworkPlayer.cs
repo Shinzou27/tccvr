@@ -23,7 +23,9 @@ public class NetworkPlayer : NetworkBehaviour
       foreach (var mesh in meshToDisable) {
           mesh.enabled = false;
       }
-      EventManager.Instance.OnPlayerEnter?.Invoke(this, playerNumber);
+      VRRigRereferences rig = VRRigRereferences.Singleton;
+      rig.leftHand.GetComponent<InteractorReference>().linkedPlayer = this;
+      rig.rightHand.GetComponent<InteractorReference>().linkedPlayer = this;
       TendSpawner.Instance.RequestSpawnTent(playerNumber);
     }
   }

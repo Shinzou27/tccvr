@@ -28,33 +28,42 @@ public class NPCBehavior : NetworkBehaviour
         SetAgent();
         EventManager.Instance.OnOrderDone += LeaveTend;
         tends = new(GameObject.FindGameObjectsWithTag("Tend").Select((go) => go.transform));
+
     }
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.D)) ChangeDestination(1, tends[0]);
-        if (agent.remainingDistance <= 1.5f && !agent.isStopped && !reachedTend && turned)
+        if (agent.remainingDistance <= 1.5f && !agent.isStopped && !reachedTend)
         {
-            Debug.Log("Cheguei na tenda");
-            if (agent.destination == defaultDestination.position) {
+            if (turned) {
+                Debug.Log("Cheguei na tenda");
+                animationStateHandler.WaitingOrder();
+                agent.isStopped = true;
+                reachedTend = true;
+                orderUI.SetActive(true);
+                EventManager.Instance.OnCustomerEnter?.Invoke(this, EventArgs.Empty);
+            } else {
+                Debug.Log("Não tive interesse em tenda alguma e serei destruído.");
                 OnDestroyBehavior();
                 Destroy(gameObject);
             }
-            animationStateHandler.WaitingOrder();
-            agent.isStopped = true;
-            reachedTend = true;
-            orderUI.SetActive(true);
-            EventManager.Instance.OnCustomerEnter?.Invoke(this, EventArgs.Empty);
         }
+        Debug.Log($"Distância do {gameObject.name} ao destino: {Vector3.Distance(transform.position, agent.destination)}");
         if (!turned) {
-            foreach (Transform t in tends) {
-                // Debug.Log($"Distância do {gameObject.name} à {t.name}: {Vector3.Distance(transform.position, t.position)}");
-                if (Vector3.Distance(transform.position, t.position) < 4) {
+            for (int i = 0; i < tends.Count; i++) {
+                Transform t = tends[i];
+                Debug.Log($"Distância do {gameObject.name} à {t.name}: {Vector3.Distance(transform.position, t.position)}");
+                if (Vector3.Distance(transform.position, t.position) < 8) {
                     float interest = UnityEngine.Random.Range(0, 100);
+                    bool shouldGo = interest <= FruitShop.Instance.interestRate * 100;
                     Debug.Log($"Interesse do {gameObject.name} na {t.name}: " + interest);
-                    if (interest <= FruitShop.Instance.interestRate * 100) {
+                    if (shouldGo) {
                         Debug.Log("Indo para a tenda");
-                        ChangeDestination(-1, t);
+                        TentInfo tentInfo = t.GetComponent<TentInfo>();
+                        ChangeDestination(tentInfo.direction, tentInfo.npcStopPoint);
                         turned = true;
+                    } else {
+                        tends.Remove(t);
                     }
                 }
             }
