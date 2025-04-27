@@ -75,3 +75,4 @@ crashlytics-build.properties
 
 /[Aa]ssets/_Assets/Models/*
 *API.cs
+*API.cs.meta
