@@ -22,4 +22,14 @@ public sealed class EventManager {
     public EventHandler OnCustomerEnter;
     public EventHandler OnOrderCreated;
     public EventHandler<bool> OnOrderDone;
+    /*
+    ----------------------------------------------------------
+    Eventos FRUIT SHOP
+    ----------------------------------------------------------
+    */
+    public class OnWaiterShouldMoveArgs : EventArgs {
+        public bool waiting;
+        public Transform destination;
+    }
+    public EventHandler<OnWaiterShouldMoveArgs> OnWaiterShouldMove;
 }

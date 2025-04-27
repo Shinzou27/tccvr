@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using Meta.WitAi.TTS.Utilities;
 using Oculus.VoiceSDK.UX;
 using UnityEngine;
 using UnityEngine.UI;
@@ -8,14 +7,14 @@ using UnityEngine.UI;
 public class GetTranscription : MonoBehaviour
 {
     [SerializeField] private VoiceTranscriptionLabel voiceTranscriptionLabel;
-    [SerializeField] private TTSSpeaker speaker;
     private float timeSinceChanged = 0;
-    private float cooldown = 5;
+    private float cooldown = 3;
     private string prev = "";
     public bool isListening = false;
     [SerializeField] private Button activateButton;
     void Update()
     {
+        isListening = voiceTranscriptionLabel.Label.text != "Press activate to begin listening";
         if (isListening) {
             if (prev == voiceTranscriptionLabel.Label.text) {
                 timeSinceChanged += Time.deltaTime;
@@ -24,18 +23,14 @@ public class GetTranscription : MonoBehaviour
                 prev = voiceTranscriptionLabel.Label.text;
             }
             if (timeSinceChanged > cooldown){
+                timeSinceChanged = 0;
                 Debug.Log(voiceTranscriptionLabel.Label.text);
                 activateButton.onClick.Invoke();
-                DebugTTS();
+                EventManager.Instance.OnWaiterShouldMove?.Invoke(this, new () {
+                    destination = transform,
+                    waiting = false
+                }); // mando ele pra cozinha
             }
         }
-    }
-    public void OnClick() {
-        isListening = !isListening;
-    }
-    private void DebugTTS() {
-        // speaker.Speak("Hello! What can I do for you today?");
-        Debug.Log("AAA");
-        speaker.Speak("Hello! It's friday! Who did, did.");
     }
 }
