@@ -11,6 +11,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/_Assets/Scenes/FruitShop.unity
     guid: f7fa201b0c98bd9459360ae8e5678948
+  - enabled: 1
+    path: Assets/_Assets/Scenes/RestaurantOrder.unity
+    guid: a86dd7bfd9bf3714bacaf01515ea5658
   m_configObjects:
     Unity.XR.Oculus.Settings: {fileID: 11400000, guid: fffb4a0be400ff3458a1882d15df8238,
       type: 2}
