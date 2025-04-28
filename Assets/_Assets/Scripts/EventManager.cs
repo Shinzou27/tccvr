@@ -27,9 +27,5 @@ public sealed class EventManager {
     Eventos FRUIT SHOP
     ----------------------------------------------------------
     */
-    public class OnWaiterShouldMoveArgs : EventArgs {
-        public bool waiting;
-        public Transform destination;
-    }
-    public EventHandler<OnWaiterShouldMoveArgs> OnWaiterShouldMove;
+    public EventHandler<Table> OnWaiterCalled;
 }

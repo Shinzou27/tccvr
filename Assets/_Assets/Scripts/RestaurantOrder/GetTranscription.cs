@@ -26,10 +26,7 @@ public class GetTranscription : MonoBehaviour
                 timeSinceChanged = 0;
                 Debug.Log(voiceTranscriptionLabel.Label.text);
                 activateButton.onClick.Invoke();
-                EventManager.Instance.OnWaiterShouldMove?.Invoke(this, new () {
-                    destination = transform,
-                    waiting = false
-                }); // mando ele pra cozinha
+                EventManager.Instance.OnWaiterCalled?.Invoke(this, RestaurantOrder.Instance.GetTableById(2));
             }
         }
     }

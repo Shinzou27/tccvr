@@ -39,10 +39,7 @@ public class ButtonFollowVisual : MonoBehaviour
     public void Freeze(BaseInteractionEventArgs args) {
         if (args.interactorObject is XRPokeInteractor) {
             freeze = true;
-            EventManager.Instance.OnWaiterShouldMove?.Invoke(this, new() {
-                destination = transform,
-                waiting = false
-            });
+            EventManager.Instance.OnWaiterCalled?.Invoke(this, RestaurantOrder.Instance.GetTableById(2));
         }
     }
     public void ResetPos(BaseInteractionEventArgs hover)
@@ -54,6 +51,15 @@ public class ButtonFollowVisual : MonoBehaviour
     }
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.A)) {
+            EventManager.Instance.OnWaiterCalled?.Invoke(this, RestaurantOrder.Instance.GetTableById(1));
+        } else if (Input.GetKeyDown(KeyCode.S)) {
+            EventManager.Instance.OnWaiterCalled?.Invoke(this, RestaurantOrder.Instance.GetTableById(2));
+        } else if (Input.GetKeyDown(KeyCode.D)) {
+            EventManager.Instance.OnWaiterCalled?.Invoke(this, RestaurantOrder.Instance.GetTableById(3));
+        } else if (Input.GetKeyDown(KeyCode.F)) {
+            EventManager.Instance.OnWaiterCalled?.Invoke(this, RestaurantOrder.Instance.GetTableById(4));
+        }
         if (freeze) return;
         if (isFollowing)
         {
