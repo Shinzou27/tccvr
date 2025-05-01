@@ -5,6 +5,7 @@ using UnityEngine.XR.Interaction.Toolkit;
 
 public class ButtonFollowVisual : MonoBehaviour
 {
+    
     private XRBaseInteractable interactable;
     private bool isFollowing = false;
     private bool freeze = false;

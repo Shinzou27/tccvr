@@ -17,6 +17,6 @@ public class ChooseConnectionMethod : MonoBehaviour
     }
     public void ChooseClient() {
         Utils.isHost = false;
-        SceneManager.LoadSceneAsync("FruitShop");
+        SceneManager.LoadSceneAsync("RestaurantOrder");
     }
 }

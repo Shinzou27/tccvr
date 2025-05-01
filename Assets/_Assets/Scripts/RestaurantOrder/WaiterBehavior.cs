@@ -17,6 +17,7 @@ public class WaiterBehavior : MonoBehaviour
     private WaiterState currentState;
     private Transform currentDestination;
 
+
     void Start()
     {
         tablesToVisit = new();
@@ -46,7 +47,7 @@ public class WaiterBehavior : MonoBehaviour
             if (xzDistance < 1f) {
                 animationHandler.Stop();
                 currentState = WaiterState.NOT_MOVING;
-                speakingHandler.Speak();
+                speakingHandler.SpeakEnter();
             }
         }
     }

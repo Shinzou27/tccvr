@@ -3,6 +3,8 @@ using UnityEngine;
 
 public class RestaurantOrder : BaseManager<RestaurantOrder> {
   public List<Table> tables;
+  public Prompt prompt;
+
   public Table GetTableById(int id) {
     if (id > 0 && id <= tables.Count) return tables[id-1];
     return null;
@@ -22,5 +24,9 @@ public class RestaurantOrder : BaseManager<RestaurantOrder> {
       if (table.withWaiter) return table;
     }
     return null;
+  }
+  public Prompt UpdatePrompt(PromptMessage newMessage) {
+    Prompt prompt = new(this.prompt.messages, newMessage);
+    return prompt;
   }
 }

@@ -25,6 +25,7 @@ public class GetTranscription : MonoBehaviour
             if (timeSinceChanged > cooldown){
                 timeSinceChanged = 0;
                 Debug.Log(voiceTranscriptionLabel.Label.text);
+                OpenAIRequest.Perform(voiceTranscriptionLabel.Label.text);
                 activateButton.onClick.Invoke();
                 EventManager.Instance.OnWaiterCalled?.Invoke(this, RestaurantOrder.Instance.GetTableById(2));
             }
