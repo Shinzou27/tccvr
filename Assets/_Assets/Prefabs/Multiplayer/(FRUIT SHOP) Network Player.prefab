@@ -86,10 +86,10 @@ GameObject:
   m_Component:
   - component: {fileID: 4984782241638020062}
   - component: {fileID: 4548729581597911478}
-  - component: {fileID: 7203661777118957338}
+  - component: {fileID: 5166015592697497796}
   - component: {fileID: 435291140575102546}
   m_Layer: 0
-  m_Name: Network Player
+  m_Name: (FRUIT SHOP) Network Player
   m_TagString: NetworkPlayer
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -133,7 +133,7 @@ MonoBehaviour:
   SpawnWithObservers: 1
   DontDestroyWithOwner: 0
   AutoObjectParentSync: 1
---- !u!114 &7203661777118957338
+--- !u!114 &5166015592697497796
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -142,7 +142,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1107728498605484716}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 24c7a1c6648288a4ea285972842d2828, type: 3}
+  m_Script: {fileID: 11500000, guid: 3049e7b944a133f40bab60657c0ce8b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   root: {fileID: 4984782241638020062}

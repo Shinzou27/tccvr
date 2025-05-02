@@ -40,7 +40,7 @@ public class ButtonFollowVisual : MonoBehaviour
     public void Freeze(BaseInteractionEventArgs args) {
         if (args.interactorObject is XRPokeInteractor) {
             freeze = true;
-            EventManager.Instance.OnWaiterCalled?.Invoke(this, RestaurantOrder.Instance.GetTableById(2));
+            EventManager.Instance.OnWaiterCalled?.Invoke(this, RestaurantOrder.Instance.GetTableByPlayerId(1));
         }
     }
     public void ResetPos(BaseInteractionEventArgs hover)

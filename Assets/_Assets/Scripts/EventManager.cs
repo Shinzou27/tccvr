@@ -24,8 +24,10 @@ public sealed class EventManager {
     public EventHandler<bool> OnOrderDone;
     /*
     ----------------------------------------------------------
-    Eventos FRUIT SHOP
+    Eventos RESTAURANT ORDER
     ----------------------------------------------------------
     */
     public EventHandler<Table> OnWaiterCalled;
+    public EventHandler<string> OnPlayerFinishedSpeaking;
+    public EventHandler<string> OnOpenAIResponse;
 }

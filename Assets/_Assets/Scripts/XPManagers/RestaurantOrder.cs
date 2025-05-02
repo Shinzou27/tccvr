@@ -4,6 +4,14 @@ using UnityEngine;
 public class RestaurantOrder : BaseManager<RestaurantOrder> {
   public List<Table> tables;
   public Prompt prompt;
+  public List<AudioClip> audios;
+  public enum OrderState { GREETING, BRINGING_ORDER, WAITING_PAYMENT}
+  private OrderState currentState;
+  void Start()
+  {
+    prompt = new();
+    currentState = OrderState.GREETING;
+  }
 
   public Table GetTableById(int id) {
     if (id > 0 && id <= tables.Count) return tables[id-1];
@@ -26,7 +34,12 @@ public class RestaurantOrder : BaseManager<RestaurantOrder> {
     return null;
   }
   public Prompt UpdatePrompt(PromptMessage newMessage) {
-    Prompt prompt = new(this.prompt.messages, newMessage);
+    prompt = new(prompt.messages, newMessage);
     return prompt;
+  }
+  public void UpdateOrderState() {
+    if (currentState != OrderState.WAITING_PAYMENT) {
+      currentState = (OrderState) (1+(int)currentState);
+    }
   }
 }

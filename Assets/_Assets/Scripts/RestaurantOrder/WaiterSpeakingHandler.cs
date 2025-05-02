@@ -15,14 +15,17 @@ public class WaiterSpeakingHandler : MonoBehaviour
   void Start()
   {
     // waiterBehavior = GetComponent<WaiterBehavior>();
-    speaker.Events.OnPlaybackComplete.AddListener(LeaveTable);
+    speaker.Events.OnPlaybackComplete.AddListener(HandleCompleteAudio);
   }
 
-  private void LeaveTable(TTSSpeaker arg0, TTSClipData arg1)
+  private void HandleCompleteAudio(TTSSpeaker arg0, TTSClipData arg1)
   {
     //TODO: logica de mandar o audio pra requisicao
     Debug.Log("Terminou de falar");
-    if (currentSpeakBehaviorType == CurrentSpeakBehaviorType.LEAVE) {
+    RestaurantOrder.Instance.audios.Add(arg1.clip);
+    if (currentSpeakBehaviorType == CurrentSpeakBehaviorType.ENTER) {
+      VoiceServiceHandler.Instance.StartService();
+    } else if (currentSpeakBehaviorType == CurrentSpeakBehaviorType.LEAVE) {
       LeaveTableAction();
     }
   }
@@ -49,8 +52,6 @@ public class WaiterSpeakingHandler : MonoBehaviour
     currentSpeakBehaviorType = CurrentSpeakBehaviorType.LEAVE;
   }
   public void Speak(string dialogue) {
-    // PromptMessage newMessage = new(latestUserSpeech, PromptMessage.Role.ASSISTANT);
-    // RestaurantOrder.Instance.UpdatePrompt(newMessage);
     speaker.Speak(dialogue);
   }
 }
