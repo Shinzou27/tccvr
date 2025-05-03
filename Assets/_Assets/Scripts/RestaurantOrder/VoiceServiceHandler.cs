@@ -16,6 +16,9 @@ public class VoiceServiceHandler : MonoBehaviour
     private const int MaxRecordingSeconds = 10;
     public bool IsRecording = false;
     public string transcription;
+    private float timeSinceChanged = 0;
+    private float cooldown = 3;
+    private string prev = "";
 
     void Awake()
     {
@@ -56,5 +59,26 @@ public class VoiceServiceHandler : MonoBehaviour
         //     Microphone.End(null);
         //     RestaurantOrder.Instance.audios.Add(recordedClip);
         // }
+        transcription = "";
+    }
+    void Update()
+    {
+        if (IsRecording) {
+            if (prev == transcription) {
+                timeSinceChanged += Time.deltaTime;
+            } else {
+                timeSinceChanged = 0;
+                prev = transcription;
+            }
+            if (timeSinceChanged > cooldown){
+                Debug.Log($"Passaram-se {cooldown} segundos, então audio deu-se por encerrado.");
+                timeSinceChanged = 0;
+                Debug.Log(transcription);
+                if (transcription != "") {
+                    EventManager.Instance.OnPlayerFinishedSpeaking?.Invoke(this, transcription);
+                    StopService();
+                }
+            }
+        }
     }
 }

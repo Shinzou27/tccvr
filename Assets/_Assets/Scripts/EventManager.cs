@@ -19,9 +19,13 @@ public sealed class EventManager {
     Eventos FRUIT SHOP
     ----------------------------------------------------------
     */
-    public EventHandler OnCustomerEnter;
-    public EventHandler OnOrderCreated;
-    public EventHandler<bool> OnOrderDone;
+    public EventHandler<GameObject> OnCustomerEnter;
+    public EventHandler<GameObject> OnOrderCreated;
+    public class OnOrderDoneArgs : EventArgs {
+        public bool isCorrect;
+        public GameObject customer;
+    }
+    public EventHandler<OnOrderDoneArgs> OnOrderDone;
     /*
     ----------------------------------------------------------
     Eventos RESTAURANT ORDER
@@ -29,5 +33,6 @@ public sealed class EventManager {
     */
     public EventHandler<Table> OnWaiterCalled;
     public EventHandler<string> OnPlayerFinishedSpeaking;
-    public EventHandler<string> OnOpenAIResponse;
+    public EventHandler<string> OnOpenAIResponseStay;
+    public EventHandler<string> OnOpenAIResponseLeave;
 }

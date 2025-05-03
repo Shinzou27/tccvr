@@ -5,7 +5,7 @@ public class RestaurantOrder : BaseManager<RestaurantOrder> {
   public List<Table> tables;
   public Prompt prompt;
   public List<AudioClip> audios;
-  public enum OrderState { GREETING, BRINGING_ORDER, WAITING_PAYMENT}
+  public enum OrderState { GREETING, ON_ORDER, WAITING_PAYMENT}
   private OrderState currentState;
   void Start()
   {
@@ -37,9 +37,10 @@ public class RestaurantOrder : BaseManager<RestaurantOrder> {
     prompt = new(prompt.messages, newMessage);
     return prompt;
   }
-  public void UpdateOrderState() {
-    if (currentState != OrderState.WAITING_PAYMENT) {
-      currentState = (OrderState) (1+(int)currentState);
-    }
+  public void UpdateOrderState(int newState) {
+    currentState = (OrderState) newState;
+  }
+  public OrderState GetOrderState() {
+    return currentState;
   }
 }

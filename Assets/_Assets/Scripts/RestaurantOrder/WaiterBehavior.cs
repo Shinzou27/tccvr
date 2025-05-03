@@ -27,9 +27,14 @@ public class WaiterBehavior : MonoBehaviour
         speakingHandler = GetComponent<WaiterSpeakingHandler>();
         speakingHandler.LeaveTableAction = UpdateDestination;
         EventManager.Instance.OnWaiterCalled += InsertTable;
-        EventManager.Instance.OnOpenAIResponse += PrepareToLeave;
+        EventManager.Instance.OnOpenAIResponseStay += SpeakButStay;
+        EventManager.Instance.OnOpenAIResponseLeave += PrepareToLeave;
     }
 
+    private void SpeakButStay(object sender, string e)
+    {
+        speakingHandler.SpeakStay(e);
+    }
     private void PrepareToLeave(object sender, string e)
     {
         speakingHandler.SpeakLeave(e);
@@ -82,7 +87,6 @@ public class WaiterBehavior : MonoBehaviour
         {
             SetDestination(kitchenDefaultPosition);
             currentState = WaiterState.WALKING_TO_KITCHEN;
-            RestaurantOrder.Instance.UpdateOrderState();
         }
     }
 }

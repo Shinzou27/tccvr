@@ -5,8 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - Fruit
-  - Tend
   - NetworkPlayer
+  - Tent
   layers:
   - Default
   - TransparentFX
