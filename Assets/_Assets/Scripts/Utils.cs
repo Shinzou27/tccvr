@@ -40,8 +40,10 @@ public static class Utils
   }
   public static string FormatFruitList(List<OrderSet> list)
   {
-    if (list == null || !list.Any())
+    if (list == null || !list.Any()) {
+      Debug.Log("N funfou");
       return string.Empty;
+    }
 
     var wordMap = new Dictionary<int, string> {
         {1, "one"}, {2, "two"}, {3, "three"}, {4, "four"}, {5, "five"},
@@ -77,5 +79,27 @@ public static class Utils
     Vector3 position = new(x, 0, z);
 
     return position;
+  }
+  public static Order GenerateOrder() {
+    int fruitAmount = UnityEngine.Random.Range(0, FruitShop.Instance.maxFruitAmount) + 1;
+    int uniqueFruits = UnityEngine.Random.Range(0, FruitShop.Instance.maxUniqueFruits) + 1;
+    if (fruitAmount < uniqueFruits) fruitAmount = uniqueFruits;
+    Debug.Log($"Frutas no total: {fruitAmount} | Tipos únicos de frutas: {uniqueFruits}");
+    FruitSO[] fruits = FruitShop.Instance.fruits.ToArray();
+    Shuffle(fruits);
+    int[] sets = GenerateRandomFruitAmountDivisions(fruitAmount, uniqueFruits);
+    Order order = new();
+    for(int i = 0; i < sets.Length; i++) {
+        order.list.Add(new(fruits[i], sets[i]));
+    }
+    order.amountOnOrder = fruitAmount;
+    return order;
+  }
+  public static Order GetOrderFromTentCustomer(TentInfo info) {
+    info.customer.TryGetComponent(out NPCFruitOrderController component);
+    if (component != null) {
+      return component.order;
+    }
+    return null;
   }
 }

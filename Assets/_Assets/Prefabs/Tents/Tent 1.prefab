@@ -191,7 +191,7 @@ Transform:
   m_GameObject: {fileID: 723006733483182792}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: 1, z: -0, w: 0.00000041723246}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -0, y: 0, z: 0.64}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1014,8 +1014,8 @@ GameObject:
   - component: {fileID: -236570639474026112}
   - component: {fileID: -238210823403559358}
   m_Layer: 0
-  m_Name: Tend 1
-  m_TagString: Tend
+  m_Name: Tent 1
+  m_TagString: Tent
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1110,6 +1110,8 @@ MonoBehaviour:
   _transform: {fileID: 3133276201429177754}
   npcStopPoint: {fileID: 5318491602268069026}
   direction: 0
+  IsFree: 1
+  customer: {fileID: 0}
 --- !u!1 &7474823366356662896
 GameObject:
   m_ObjectHideFlags: 0
@@ -2014,6 +2016,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3547174886399522873, guid: 0f54cb754a4c5044f89092b83d14ece3,
+        type: 3}
+      propertyPath: tent
+      value: 
+      objectReference: {fileID: -238210823403559358}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
