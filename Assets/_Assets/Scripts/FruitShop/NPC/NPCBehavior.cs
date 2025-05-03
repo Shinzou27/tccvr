@@ -8,14 +8,14 @@ using UnityEngine.AI;
 
 public class NPCBehavior : NetworkBehaviour
 {
-    private List<Transform> tends;
+    private List<Transform> tents;
     private Transform defaultDestination;
     [SerializeField] private NPCAnimationStateHandler animationStateHandler;
-    [SerializeField] private GameObject orderUI;
     private NavMeshAgent agent;
     private bool turned = false;
-    private bool reachedTend = false;
+    private bool reachedTent = false;
     public Action OnDestroyBehavior;
+    private NPCDialogue npcDialogue;
     // Start is called before the first frame update
     private void SetAgent() {
         if (agent == null) {
@@ -24,46 +24,51 @@ public class NPCBehavior : NetworkBehaviour
     }
     void Start()
     {
-        orderUI.SetActive(false);
+        npcDialogue = GetComponent<NPCDialogue>();
         SetAgent();
-        EventManager.Instance.OnOrderDone += LeaveTend;
-        tends = new(GameObject.FindGameObjectsWithTag("Tend").Select((go) => go.transform));
-
+        EventManager.Instance.OnOrderDone += LeaveTent;
+        tents = new(GameObject.FindGameObjectsWithTag("Tent").Select((go) => go.transform));
     }
-    private void Update()
+    public override void OnDestroy()
     {
-        if (Input.GetKeyDown(KeyCode.D)) ChangeDestination(1, tends[0]);
-        if (agent.remainingDistance <= 1.5f && !agent.isStopped && !reachedTend)
+        base.OnDestroy();
+        EventManager.Instance.OnOrderDone -= LeaveTent;
+    }  
+  private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.D)) ChangeDestination(1, tents[0]);
+        if (agent.remainingDistance <= 1.5f && !agent.isStopped && !reachedTent)
         {
             if (turned) {
                 Debug.Log("Cheguei na tenda");
                 animationStateHandler.WaitingOrder();
                 agent.isStopped = true;
-                reachedTend = true;
-                orderUI.SetActive(true);
-                EventManager.Instance.OnCustomerEnter?.Invoke(this, EventArgs.Empty);
+                reachedTent = true;
+                EventManager.Instance.OnCustomerEnter?.Invoke(this, gameObject);
             } else {
                 Debug.Log("Não tive interesse em tenda alguma e serei destruído.");
                 OnDestroyBehavior();
                 Destroy(gameObject);
             }
         }
-        Debug.Log($"Distância do {gameObject.name} ao destino: {Vector3.Distance(transform.position, agent.destination)}");
+        // Debug.Log($"Distância do {gameObject.name} ao destino: {Vector3.Distance(transform.position, agent.destination)}");
         if (!turned) {
-            for (int i = 0; i < tends.Count; i++) {
-                Transform t = tends[i];
-                Debug.Log($"Distância do {gameObject.name} à {t.name}: {Vector3.Distance(transform.position, t.position)}");
+            for (int i = 0; i < tents.Count; i++) {
+                Transform t = tents[i];
+                // Debug.Log($"Distância do {gameObject.name} à {t.name}: {Vector3.Distance(transform.position, t.position)}");
                 if (Vector3.Distance(transform.position, t.position) < 8) {
+                    TentInfo tentInfo = t.GetComponent<TentInfo>();
                     float interest = UnityEngine.Random.Range(0, 100);
-                    bool shouldGo = interest <= FruitShop.Instance.interestRate * 100;
+                    bool shouldGo = tentInfo.IsFree && interest <= FruitShop.Instance.interestRate * 100;
                     Debug.Log($"Interesse do {gameObject.name} na {t.name}: " + interest);
                     if (shouldGo) {
                         Debug.Log("Indo para a tenda");
-                        TentInfo tentInfo = t.GetComponent<TentInfo>();
                         ChangeDestination(tentInfo.direction, tentInfo.npcStopPoint);
+                        tentInfo.IsFree = false;
+                        tentInfo.customer = gameObject;
                         turned = true;
                     } else {
-                        tends.Remove(t);
+                        tents.Remove(t);
                     }
                 }
             }
@@ -74,24 +79,32 @@ public class NPCBehavior : NetworkBehaviour
         SetAgent();
         agent.destination = defaultDestination.position;
     }
-    public void ChangeDestination(float dir, Transform tendToGo)
+    public void ChangeDestination(float dir, Transform tentToGo)
     {
         agent.isStopped = true;
-        agent.destination = tendToGo.position;
+        agent.destination = tentToGo.position;
         animationStateHandler.Turn(dir, () => agent.isStopped = false);
     }
-    public void LeaveTend(object sender, bool correctOrder)
+    public void LeaveTent(object sender, EventManager.OnOrderDoneArgs onOrderDoneArgs)
     {
-        agent.destination = defaultDestination.position;
-        if (correctOrder) animationStateHandler.OrderCorrect(() =>
-        {
-            agent.isStopped = false;
+        if (onOrderDoneArgs.customer == gameObject) {
+            agent.destination = defaultDestination.position;
+            if (onOrderDoneArgs.isCorrect) {
+                npcDialogue.LeaveCorrect();
+                animationStateHandler.OrderCorrect(() =>
+                {
+                    agent.isStopped = false;
 
-        });
-        else animationStateHandler.OrderIncorrect(() =>
-        {
-            agent.isStopped = false;
+                });
+            }
+            else {
+                npcDialogue.LeaveIncorrect();
+                animationStateHandler.OrderIncorrect(() =>
+                {
+                    agent.isStopped = false;
 
-        });
+                });
+            }
+        }
     }
 }
