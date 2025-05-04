@@ -1,29 +1,22 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Netcode;
 using UnityEngine;
 
-public class NPCFruitOrderController : MonoBehaviour
+public class NPCFruitOrderController : NetworkBehaviour
 {
     public Order order;
     void Start()
     {
-        EventManager.Instance.OnCustomerEnter += SetOrder;
-    }
-    void OnDestroy()
-    {
-        EventManager.Instance.OnCustomerEnter -= SetOrder;
+        SetOrder();
     }
 
-    private void SetOrder(object sender, GameObject e)
+    private void SetOrder()
     {
-        if (e == gameObject)
-        {
-            order = Utils.GenerateOrder();
-            order._dynamic = false;
-            order.DebugOrder();
-            Debug.Log("Coisando o evento:");
-            EventManager.Instance.OnOrderCreated?.Invoke(this, gameObject);
-        }
+        order = Utils.GenerateOrder();
+        order._dynamic = false;
+        order.DebugOrder();
     }
+
 }

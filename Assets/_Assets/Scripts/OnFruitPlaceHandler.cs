@@ -12,7 +12,7 @@ public class OnFruitPlaceHandler : MonoBehaviour
             if (other.gameObject.TryGetComponent(out FruitInfo info)) {
                 FruitShop.Instance.fruitsPlacedByPlayer.PlaceFruit(info.data);
                 Order customerOrder = Utils.GetOrderFromTentCustomer(tent);
-                if (customerOrder.amountOnOrder == FruitShop.Instance.fruitsPlacedByPlayer.amountOnOrder) {
+                if (customerOrder != null && customerOrder.amountOnOrder == FruitShop.Instance.fruitsPlacedByPlayer.amountOnOrder) {
                     bool isCorrect = FruitShop.Instance.EvaluateOrder(customerOrder);
                     EventManager.Instance.OnOrderDone?.Invoke(this, new() {
                         isCorrect = isCorrect,

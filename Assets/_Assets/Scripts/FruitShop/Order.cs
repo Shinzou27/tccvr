@@ -12,7 +12,7 @@ public class Order
     public void DebugOrder() {
         string toPrint = "";
         foreach (OrderSet order in list) {
-            toPrint += $"Fruta: {order.fruit.fruitName} | Quantidade: {order.amount}";
+            toPrint += $"Fruta: {order.fruit.fruitName} | Quantidade: {order.amount} ";
         }
         Debug.Log(toPrint);
     }

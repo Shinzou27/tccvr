@@ -96,6 +96,7 @@ public static class Utils
     return order;
   }
   public static Order GetOrderFromTentCustomer(TentInfo info) {
+    if (!info.customer) return null;
     info.customer.TryGetComponent(out NPCFruitOrderController component);
     if (component != null) {
       return component.order;
