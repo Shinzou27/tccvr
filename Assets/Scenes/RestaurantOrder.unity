@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.003204829, g: 0.0063439845, b: 0.014498586, a: 1}
+  m_IndirectSpecularColor: {r: 0.0032028765, g: 0.0063423906, b: 0.014481477, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -4253,7 +4253,8 @@ PrefabInstance:
       value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 65702495048144492, guid: 7f6073815d33c4540bb4d96dabc3ed2c, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 4131739556978693691, guid: 7f6073815d33c4540bb4d96dabc3ed2c,
@@ -8767,7 +8768,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -5417810574684339564, guid: 4e4473d32ea749346a5408b4346ae0a7, type: 3}
+  - {fileID: -7063551487193715106, guid: 818ce14576e757e4babf651cf41ba765, type: 3}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

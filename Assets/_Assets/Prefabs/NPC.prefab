@@ -918,7 +918,6 @@ GameObject:
   - component: {fileID: 1375454984712169636}
   - component: {fileID: 249070897611726985}
   - component: {fileID: 2072567835812637702}
-  - component: {fileID: 1195910461787512892}
   m_Layer: 0
   m_Name: NPC
   m_TagString: Untagged
@@ -977,7 +976,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GlobalObjectIdHash: 505850488
+  GlobalObjectIdHash: 255315505
   InScenePlacedSourceGlobalObjectIdHash: 0
   AlwaysReplicateAsRoot: 0
   SynchronizeTransform: 1
@@ -1115,19 +1114,6 @@ MonoBehaviour:
     list: []
     amountOnOrder: 0
     _dynamic: 1
---- !u!114 &1195910461787512892
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5358671611973272012}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c19c68e2bb1a8f0458d38060afe6b4f1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speaker: {fileID: 2537654173665561126}
 --- !u!1 &5417007224999005881
 GameObject:
   m_ObjectHideFlags: 0
@@ -1999,18 +1985,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f9b8db691a0dbc2428c9222c93d45619, type: 3}
---- !u!114 &2537654173665561126 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4513614043593191325, guid: f9b8db691a0dbc2428c9222c93d45619,
-    type: 3}
-  m_PrefabInstance: {fileID: 2131358246328968635}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b15403450229c3a4b8455a61d6143a6d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &5898236663299341470 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5498514674883090725, guid: f9b8db691a0dbc2428c9222c93d45619,

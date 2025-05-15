@@ -14,20 +14,20 @@ public class GetExperienceStudentList : MonoBehaviour
     if (Instance == null)
     Instance = this;
   }
-  public void StartRequest(string pin, Action callback)
+  public void StartRequest(string pin, Action callback, Action<string> errorHandler)
   {
-    StartCoroutine(Perform(pin, callback));
+    StartCoroutine(Perform(pin, callback, errorHandler));
   }
-  private IEnumerator Perform(string pin, Action callback)
+  private IEnumerator Perform(string pin, Action callback, Action<string> errorHandler)
   {
-    string url = "http://localhost:3000/experience/getOne";
+    string server = "https://tcc-backend-4khc.onrender.com";
+    string url = $"{server}/experience/getOne?pin={pin}";
     var request = new UnityWebRequest(url, "GET");
-    byte[] bodyRaw = Encoding.UTF8.GetBytes(@"{""pin"": """ + pin + @"""}");
-    request.uploadHandler = new UploadHandlerRaw(bodyRaw);
     request.downloadHandler = new DownloadHandlerBuffer();
     request.SetRequestHeader("Content-Type", "application/json");
     // request.SetRequestHeader("Authorization", "Bearer " + API.apiKey);
 
+    errorHandler(request.url);
     yield return request.SendWebRequest();
 
     if (request.result == UnityWebRequest.Result.Success)
@@ -35,8 +35,11 @@ public class GetExperienceStudentList : MonoBehaviour
       ExperienceResponse response = JsonConvert.DeserializeObject<ExperienceResponse>(request.downloadHandler.text);
       GetComponent<ExperienceInfo>().response = response;
       callback.Invoke();
-    } else {
-      Debug.Log(request.error);
+      errorHandler(request.url);
+    }
+    else
+    {
+      errorHandler(request.error);
     }
   }
 }

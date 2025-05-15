@@ -15,16 +15,21 @@ public class EnterExperienceRequest : MonoBehaviour
     if (Instance == null)
     Instance = this;
   }
-  public void StartRequest(EnterExperienceParams _params, Action callback)
+  public void StartRequest(EnterExperienceParams _params, Action callback, Action<string> errorHandler)
   {
-    StartCoroutine(Perform(_params, callback));
+    StartCoroutine(Perform(_params, callback, errorHandler));
   }
-  private IEnumerator Perform(EnterExperienceParams _params, Action callback)
+  private IEnumerator Perform(EnterExperienceParams _params, Action callback, Action<string> errorHandler)
   {
-    string url = "http://localhost:3000/experience/enter";
-    var request = new UnityWebRequest(url, "PATCH");
+    string server = "";
+    server = "https://tcc-backend-4khc.onrender.com";
+    string url = $"{server}/experience/enter";
     byte[] bodyRaw = Encoding.UTF8.GetBytes(JsonConvert.SerializeObject(_params));
+    var request = UnityWebRequest.Put(url, bodyRaw);
+    request.method = "PATCH";
     request.uploadHandler = new UploadHandlerRaw(bodyRaw);
+    Debug.Log(bodyRaw);
+    Debug.Log(request.url);
     request.downloadHandler = new DownloadHandlerBuffer();
     request.SetRequestHeader("Content-Type", "application/json");
     // request.SetRequestHeader("Authorization", "Bearer " + API.apiKey);
@@ -37,7 +42,7 @@ public class EnterExperienceRequest : MonoBehaviour
       Debug.Log($"código: {response.joinCode}");
       callback.Invoke();
     } else {
-      Debug.Log(request.error);
+      errorHandler(request.error);
     }
   }
 }

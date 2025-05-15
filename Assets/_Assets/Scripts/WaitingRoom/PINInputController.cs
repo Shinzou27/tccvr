@@ -9,6 +9,7 @@ public class PINInputController : MonoBehaviour
 {
     [SerializeField] private TMP_InputField pinInput;
     [SerializeField] private Button proceedButton;
+    [SerializeField] private TextMeshProUGUI errorLog;
     public Action onProceedClick;
     private void Start() {
         proceedButton.interactable = false;
@@ -17,7 +18,7 @@ public class PINInputController : MonoBehaviour
         proceedButton.interactable = input.Length == 6;
     }
     public void SendRequest() {
-        GetExperienceStudentList.Instance.StartRequest(pinInput.text, onProceedClick);
+        GetExperienceStudentList.Instance.StartRequest(pinInput.text, onProceedClick, error => errorLog.text = error);
     }
     public string GetPIN() {
         return pinInput.text;

@@ -1,4 +1,5 @@
 using System;
+using TMPro;
 using Unity.Services.Authentication;
 using Unity.Services.Core;
 using Unity.Services.Relay;
@@ -9,6 +10,7 @@ using UnityEngine.SceneManagement;
 public class ChooseExperienceController : MonoBehaviour
 {
   [SerializeField] private ExperienceInfo experience;
+  [SerializeField] private TextMeshProUGUI errorLog;
   private readonly int maxConnection = 20;
   private const string FRUIT_SHOP = "FruitShop";
   private const string RESTAURANT_ORDER = "RestaurantOrder";
@@ -57,6 +59,6 @@ public class ChooseExperienceController : MonoBehaviour
       joinCode = joinCode,
     };
     UpdateEnterExperienceParams.Invoke(_params);
-    EnterExperienceRequest.Instance.StartRequest(_params, callback);
+    EnterExperienceRequest.Instance.StartRequest(_params, callback, error => errorLog.text = error);
   }
 }
