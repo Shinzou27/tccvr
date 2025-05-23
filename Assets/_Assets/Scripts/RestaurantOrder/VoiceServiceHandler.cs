@@ -4,10 +4,12 @@ using Meta.WitAi.Requests;
 using Meta.WitAi.Configuration;
 using System;
 using Oculus.VoiceSDK.UX;
+using UnityEngine.InputSystem;
 
 public class VoiceServiceHandler : MonoBehaviour
 {
     [SerializeField] private VoiceService service;
+    [SerializeField] private InputActionReference speakButton;
     private VoiceServiceRequest _request;
     public static VoiceServiceHandler Instance;
 
@@ -19,7 +21,6 @@ public class VoiceServiceHandler : MonoBehaviour
     private float timeSinceChanged = 0;
     private float cooldown = 3;
     private string prev = "";
-
     void Awake()
     {
         if (Instance == null) Instance = this;
@@ -43,6 +44,7 @@ public class VoiceServiceHandler : MonoBehaviour
 
     public void StopService()
     {
+        EventManager.Instance.OnPlayerFinishedSpeaking?.Invoke(this, transcription);
         Debug.Log("terminando gravacao");
         IsRecording = false;
         if (_request != null)
@@ -63,22 +65,35 @@ public class VoiceServiceHandler : MonoBehaviour
     }
     void Update()
     {
-        if (IsRecording) {
-            if (prev == transcription) {
-                timeSinceChanged += Time.deltaTime;
-            } else {
-                timeSinceChanged = 0;
-                prev = transcription;
-            }
-            if (timeSinceChanged > cooldown){
-                Debug.Log($"Passaram-se {cooldown} segundos, então audio deu-se por encerrado.");
-                timeSinceChanged = 0;
-                Debug.Log(transcription);
-                if (transcription != "") {
-                    EventManager.Instance.OnPlayerFinishedSpeaking?.Invoke(this, transcription);
-                    StopService();
-                }
-            }
+        // if (IsRecording)
+        // {
+        //     if (prev == transcription)
+        //     {
+        //         timeSinceChanged += Time.deltaTime;
+        //     }
+        //     else
+        //     {
+        //         timeSinceChanged = 0;
+        //         prev = transcription;
+        //     }
+        //     if (timeSinceChanged > cooldown)
+        //     {
+        //         Debug.Log($"Passaram-se {cooldown} segundos, então audio deu-se por encerrado.");
+        //         timeSinceChanged = 0;
+        //         Debug.Log(transcription);
+        //         if (transcription != "")
+        //         {
+        //             StopService();
+        //         }
+        //     }
+        // }
+        if (!IsRecording && speakButton.action.ReadValue<float>() == 1)
+        {
+            StartService();
+        }
+        else if (IsRecording && speakButton.action.ReadValue<float>() == 0)
+        {
+            StopService();
         }
     }
 }

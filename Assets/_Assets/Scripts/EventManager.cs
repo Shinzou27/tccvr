@@ -13,7 +13,11 @@ public sealed class EventManager {
     Eventos MULTIPLAYER
     ----------------------------------------------------------
     */
-    public EventHandler<Transform> OnPlayerEnter;
+    public class OnPlayerEnterArgs : EventArgs {
+        public Transform pos;
+        public int playerNumber;
+    }
+    public EventHandler<OnPlayerEnterArgs> OnPlayerEnter;
     /*
     ----------------------------------------------------------
     Eventos FRUIT SHOP

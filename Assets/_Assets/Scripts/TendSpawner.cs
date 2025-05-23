@@ -54,12 +54,27 @@ public class TendSpawner : NetworkBehaviour
     GameObject tent = Instantiate(prefabs[Random.Range(0, prefabs.Count)], position, rotation);
     tent.GetComponent<TentInfo>().direction = (playerNumber % 2 == 0) ? -1 : 1;
     NetworkObject networkObject = tent.GetComponent<NetworkObject>();
-    Transform playerSpawnPoint = tent.GetComponent<TentInfo>()._transform;
-    EventManager.Instance.OnPlayerEnter?.Invoke(this, playerSpawnPoint);
     networkObject.Spawn();
+    Transform playerSpawnPoint = tent.GetComponent<TentInfo>()._transform;
+    EventManager.Instance.OnPlayerEnter?.Invoke(this, new()
+    {
+      playerNumber = playerNumber,
+      pos = playerSpawnPoint
+    });
     spawned.Add(tent);
+    TriggerOnPlayerEnterClientRpc(playerNumber, playerSpawnPoint.position, playerSpawnPoint.rotation);
+    Debug.Log("spawn tent");
   }
-  public List<GameObject> GetTents() {
-    return spawned;
+  [ClientRpc]
+  private void TriggerOnPlayerEnterClientRpc(int playerNumber, Vector3 position, Quaternion rotation)
+  {
+    Transform temp = new GameObject("TempTransform").transform;
+    temp.SetPositionAndRotation(position, rotation);
+    EventManager.Instance.OnPlayerEnter?.Invoke(this, new()
+    {
+        playerNumber = playerNumber,
+        pos = temp
+    });
   }
+
 }

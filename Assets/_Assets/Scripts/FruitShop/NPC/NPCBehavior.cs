@@ -43,7 +43,7 @@ public class NPCBehavior : NetworkBehaviour
     {
       if (turned)
       {
-        Debug.Log("Cheguei na tenda");
+        // Debug.Log("Cheguei na tenda");
         animationStateHandler.WaitingOrder();
         agent.isStopped = true;
         reachedTent = true;
@@ -53,7 +53,7 @@ public class NPCBehavior : NetworkBehaviour
       else
       {
         if (IsServer) {
-          Debug.Log("Não tive interesse em tenda alguma e serei destruído.");
+          // Debug.Log("Não tive interesse em tenda alguma e serei destruído.");
           OnDestroyBehavior?.Invoke();
           Destroy(gameObject);
         }
@@ -66,7 +66,7 @@ public class NPCBehavior : NetworkBehaviour
       {
         Transform t = tents[i];
         // Debug.Log($"Distância do {gameObject.name} à {t.name}: {Vector3.Distance(transform.position, t.position)}");
-        if (Vector3.Distance(transform.position, t.position) < 8)
+        if (Vector3.Distance(transform.position, t.position) < 10)
         {
           TentInfo tentInfo = t.GetComponent<TentInfo>();
           float interest = UnityEngine.Random.Range(0, 100);

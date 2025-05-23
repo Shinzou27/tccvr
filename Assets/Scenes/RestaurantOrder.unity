@@ -3487,6 +3487,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   service: {fileID: 737401905}
+  speakButton: {fileID: 5920850736234800459, guid: c348712bda248c246b8c49b3db54643f,
+    type: 3}
   IsRecording: 0
   transcription: 
 --- !u!114 &432946261
@@ -4102,6 +4104,11 @@ PrefabInstance:
       propertyPath: m_Intensity
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: -4718040791104185828, guid: 7f6073815d33c4540bb4d96dabc3ed2c,
+        type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 1d2e8a4b83ff8d049860e9567883b5ad, type: 2}
     - target: {fileID: -4296712277950662463, guid: 7f6073815d33c4540bb4d96dabc3ed2c,
         type: 3}
       propertyPath: m_Color.b

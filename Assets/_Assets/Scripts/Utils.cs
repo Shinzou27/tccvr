@@ -84,7 +84,7 @@ public static class Utils
     int fruitAmount = UnityEngine.Random.Range(0, FruitShop.Instance.maxFruitAmount) + 1;
     int uniqueFruits = UnityEngine.Random.Range(0, FruitShop.Instance.maxUniqueFruits) + 1;
     if (fruitAmount < uniqueFruits) fruitAmount = uniqueFruits;
-    Debug.Log($"Frutas no total: {fruitAmount} | Tipos únicos de frutas: {uniqueFruits}");
+    // Debug.Log($"Frutas no total: {fruitAmount} | Tipos únicos de frutas: {uniqueFruits}");
     FruitSO[] fruits = FruitShop.Instance.fruits.ToArray();
     Shuffle(fruits);
     int[] sets = GenerateRandomFruitAmountDivisions(fruitAmount, uniqueFruits);

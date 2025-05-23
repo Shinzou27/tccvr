@@ -804,6 +804,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   service: {fileID: 1327879906}
+  speakButton: {fileID: 5920850736234800459, guid: c348712bda248c246b8c49b3db54643f,
+    type: 3}
   IsRecording: 0
   transcription: 
 --- !u!1 &50096768

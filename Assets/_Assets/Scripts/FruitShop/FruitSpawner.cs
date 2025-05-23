@@ -32,7 +32,7 @@ public class FruitSpawner : NetworkBehaviour
     [ServerRpc(RequireOwnership = false)]
     private void SpawnTentServerRpc(Vector3 position, FruitType fruitType, int amount)
     {
-        Debug.LogError($"Sou cliente e estou instanciando {amount} unidades de {fruitType}.");
+        // Debug.LogError($"Sou cliente e estou instanciando {amount} unidades de {fruitType}.");
         SpawnTent(position, fruitType, amount);
     }
 

@@ -34,12 +34,12 @@ If the customer keeps talking without ordering, politely leave the table.
 IMPORTANT: Always respond using this exact JSON object format:
 {
   ""content"": ""Your dialogue here"",
-  ""stayOnTable"": true,
-  ""orderState"": 1
+  ""stayOnTable"": true or false,
+  ""orderState"": 0, 1 or 2
 }
 
 
-""stayOnTable"": true if you should continue be at the table after this reply. Set to false if you should leave (e.g., go to the kitchen or balcony).
+""stayOnTable"": true if you still need to gather any information from the customer given the current moment of the interaction. Set to false if you should leave the table (e.g., go to the kitchen or balcony). If the customer asks you to leave, it also must be false.
 
 ""orderState"" (must be an integer):
 - 0: welcoming phase
@@ -48,7 +48,6 @@ IMPORTANT: Always respond using this exact JSON object format:
 ",
       PromptMessage.Role.system
     );
-    Debug.Log("AAA");
   }
 
   public Prompt(PromptMessage[] previousMessages, PromptMessage latestMessage) {

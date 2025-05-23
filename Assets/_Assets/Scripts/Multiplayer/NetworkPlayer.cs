@@ -11,6 +11,24 @@ public class NetworkPlayer : NetworkBehaviour
   public Transform leftHand;
   public Transform rightHand;
   public Renderer[] meshToDisable;
+  void Start()
+  {
+    EventManager.Instance.OnPlayerEnter += SetPosition;
+  }
+
+  public override void OnDestroy()
+  {
+    base.OnDestroy();
+    EventManager.Instance.OnPlayerEnter -= SetPosition;
+  }
+
+  private void SetPosition(object sender, EventManager.OnPlayerEnterArgs e)
+  {
+    Debug.Log($"[SetPosition] Received spawn for client {e.playerNumber}, I'm {NetworkManager.Singleton.LocalClientId}");
+    Debug.Log($"[SetPosition] Rig Number: {VRRigRereferences.Singleton.playerNumber}");
+    if (VRRigRereferences.Singleton.playerNumber != e.playerNumber) return;
+    VRRigRereferences.Singleton.transform.SetPositionAndRotation(e.pos.position, e.pos.rotation);
+  }
 
   // Update is called once per frame
   void Update()

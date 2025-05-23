@@ -14,19 +14,19 @@ public class Order
         foreach (OrderSet order in list) {
             toPrint += $"Fruta: {order.fruit.fruitName} | Quantidade: {order.amount} ";
         }
-        Debug.Log(toPrint);
+        // Debug.Log(toPrint);
     }
     public void PlaceFruit(FruitSO fruit) {
         if (!_dynamic) return;
         if (HaveOrderSetOfFruit(fruit.type)) {
-            Debug.Log("Já tenho essa fruta no order set");
+            // Debug.Log("Já tenho essa fruta no order set");
             foreach (OrderSet order in list) {
                 if (order.fruit == fruit) {
                     order.IncreaseAmount();
                 }
             }
         } else {
-            Debug.Log("Não tenho essa fruta no order set");
+            // Debug.Log("Não tenho essa fruta no order set");
             list.Add(new OrderSet(fruit, 1));
         }
         amountOnOrder++;

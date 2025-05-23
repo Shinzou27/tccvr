@@ -263,7 +263,7 @@ GameObject:
   - component: {fileID: 5827054633766131996}
   m_Layer: 0
   m_Name: Tend 2
-  m_TagString: Tend
+  m_TagString: Tent
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -337,7 +337,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GlobalObjectIdHash: 4174669597
+  GlobalObjectIdHash: 3133546200
   InScenePlacedSourceGlobalObjectIdHash: 0
   AlwaysReplicateAsRoot: 0
   SynchronizeTransform: 1
@@ -377,6 +377,8 @@ MonoBehaviour:
   _transform: {fileID: 7509871698763535701}
   npcStopPoint: {fileID: 424770869750904813}
   direction: 0
+  IsFree: 1
+  customer: {fileID: 0}
 --- !u!1 &1370212405386092515
 GameObject:
   m_ObjectHideFlags: 0
@@ -3626,6 +3628,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3547174886399522873, guid: 0f54cb754a4c5044f89092b83d14ece3,
+        type: 3}
+      propertyPath: tent
+      value: 
+      objectReference: {fileID: 5827054633766131996}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
