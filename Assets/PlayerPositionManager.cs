@@ -5,6 +5,8 @@ using UnityEngine;
 public class PlayerPositionManager : MonoBehaviour
 {
     [SerializeField] private List<Transform> seats;
+    [SerializeField] private Transform fixedSeat;
+    public bool randomizePosition;
     public static PlayerPositionManager Instance;
     void Awake()
     {
@@ -13,7 +15,12 @@ public class PlayerPositionManager : MonoBehaviour
             Instance = this;
         }
     }
-    public Transform GetPlayerSpawn(int playerNumber) {
-        return seats[playerNumber];
+    public Transform GetPlayerSpawn(int playerNumber)
+    {
+        if (randomizePosition)
+        {
+            return seats[playerNumber];
+        }
+        return fixedSeat;
     }
 }

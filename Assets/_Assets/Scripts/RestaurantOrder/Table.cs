@@ -3,6 +3,7 @@ using UnityEngine;
 
 [Serializable]
 public class Table {
+  public bool active;
   public int Id;
   public int maxPlayers;
   public int[] playersOnTable;
