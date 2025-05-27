@@ -40,6 +40,7 @@ public class ButtonFollowVisual : MonoBehaviour
     public void Freeze(BaseInteractionEventArgs args) {
         if (args.interactorObject is XRPokeInteractor) {
             freeze = true;
+            TableDisplayManager.Instance.SetLabel("O garçom está indo à sua mesa.");
             EventManager.Instance.OnWaiterCalled?.Invoke(this, RestaurantOrder.Instance.GetTableByPlayerId(1));
         }
     }

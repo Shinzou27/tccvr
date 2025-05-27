@@ -1,31 +1,45 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Meta.WitAi.Speech;
 using Meta.WitAi.TTS.Data;
 using Meta.WitAi.TTS.Utilities;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class WaiterSpeakingHandler : MonoBehaviour
 {
   [SerializeField] private TTSSpeaker speaker;
   public Action LeaveTableAction;
-  public enum CurrentSpeakBehaviorType {ENTER, STAY, LEAVE}
+  public enum CurrentSpeakBehaviorType { ENTER, STAY, LEAVE }
   private CurrentSpeakBehaviorType currentSpeakBehaviorType;
+  [SerializeField] private float waiterReturnTime;
   // private WaiterBehavior waiterBehavior;
   void Start()
   {
     // waiterBehavior = GetComponent<WaiterBehavior>();
-    speaker.Events.OnPlaybackComplete.AddListener(HandleCompleteAudio);
+    // speaker.Events.OnPlaybackStart.AddListener(HandleStartAudio);
+    // speaker.Events.OnPlaybackComplete.AddListener(HandleCompleteAudio);
   }
 
-  private void HandleCompleteAudio(TTSSpeaker arg0, TTSClipData arg1)
+  public void HandleStartAudio(TTSSpeaker arg0, TTSClipData arg1)
+  {
+    Debug.Log("Garçom começou a hablar");
+  }
+
+  public void HandleCompleteAudio(TTSSpeaker arg0, TTSClipData arg1)
   {
     //TODO: logica de mandar o audio pra requisicao
     Debug.Log("Terminou de falar");
     RestaurantOrder.Instance.audios.Add(arg1.clip);
-    if (currentSpeakBehaviorType == CurrentSpeakBehaviorType.ENTER || currentSpeakBehaviorType == CurrentSpeakBehaviorType.STAY) {
-      VoiceServiceHandler.Instance.StartService();
-    } else if (currentSpeakBehaviorType == CurrentSpeakBehaviorType.LEAVE) {
+    if (currentSpeakBehaviorType == CurrentSpeakBehaviorType.ENTER || currentSpeakBehaviorType == CurrentSpeakBehaviorType.STAY)
+    {
+      RestaurantOrder.Instance.UpdateSpeakState(RestaurantOrder.SpeakState.PLAYER_CAN_SPEAK);
+      // VoiceServiceHandler.Instance.StartService();
+    }
+    else if (currentSpeakBehaviorType == CurrentSpeakBehaviorType.LEAVE)
+    {
+      StartCoroutine(WaitToUpdateDisplay());
       LeaveTableAction();
     }
   }
@@ -34,7 +48,8 @@ public class WaiterSpeakingHandler : MonoBehaviour
   {
     string dialogue = "";
     Debug.Log("A");
-    switch (RestaurantOrder.Instance.GetOrderState()) {
+    switch (RestaurantOrder.Instance.GetOrderState())
+    {
       case RestaurantOrder.OrderState.GREETING:
         dialogue = "Hello! It's friday! Who did it, did it.";
         break;
@@ -64,7 +79,25 @@ public class WaiterSpeakingHandler : MonoBehaviour
     Speak(dialogue);
     currentSpeakBehaviorType = CurrentSpeakBehaviorType.LEAVE;
   }
-  public void Speak(string dialogue) {
+  public void Speak(string dialogue)
+  {
     speaker.Speak(dialogue);
+    RestaurantOrder.Instance.UpdateSpeakState(RestaurantOrder.SpeakState.WAITER_SPEAKING);
+  }
+  public IEnumerator WaitToUpdateDisplay()
+  {
+    float elapsed = 0;
+    TableDisplayManager.Instance.SetLabel("Aguarde o garçom voltar à cozinha.");
+    while (elapsed < waiterReturnTime)
+    {
+      elapsed += Time.deltaTime;
+      yield return null;
+    }
+    RestaurantOrder.Instance.UpdateSpeakState(RestaurantOrder.SpeakState.NONE);
+
+  }
+  public void GetAudioLength(AudioClip clip)
+  {
+    Debug.Log(clip.length);
   }
 }

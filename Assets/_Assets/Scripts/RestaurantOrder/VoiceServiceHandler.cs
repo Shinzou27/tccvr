@@ -40,10 +40,12 @@ public class VoiceServiceHandler : MonoBehaviour
         _request = service.Activate(new WitRequestOptions(), new VoiceServiceRequestEvents());
         // recordedClip = Microphone.Start(null, false, MaxRecordingSeconds, SampleRate);
         IsRecording = true;
+        RestaurantOrder.Instance.UpdateSpeakState(RestaurantOrder.SpeakState.PLAYER_SPEAKING);
     }
 
     public void StopService()
     {
+        RestaurantOrder.Instance.UpdateSpeakState(RestaurantOrder.SpeakState.WAITING_WAITER);
         EventManager.Instance.OnPlayerFinishedSpeaking?.Invoke(this, transcription);
         Debug.Log("terminando gravacao");
         IsRecording = false;
@@ -65,35 +67,21 @@ public class VoiceServiceHandler : MonoBehaviour
     }
     void Update()
     {
-        // if (IsRecording)
-        // {
-        //     if (prev == transcription)
-        //     {
-        //         timeSinceChanged += Time.deltaTime;
-        //     }
-        //     else
-        //     {
-        //         timeSinceChanged = 0;
-        //         prev = transcription;
-        //     }
-        //     if (timeSinceChanged > cooldown)
-        //     {
-        //         Debug.Log($"Passaram-se {cooldown} segundos, então audio deu-se por encerrado.");
-        //         timeSinceChanged = 0;
-        //         Debug.Log(transcription);
-        //         if (transcription != "")
-        //         {
-        //             StopService();
-        //         }
-        //     }
-        // }
-        if (!IsRecording && speakButton.action.ReadValue<float>() == 1)
+        if (RestaurantOrder.Instance.GetSpeakState() == RestaurantOrder.SpeakState.PLAYER_CAN_SPEAK || RestaurantOrder.Instance.GetSpeakState() == RestaurantOrder.SpeakState.PLAYER_SPEAKING)
         {
-            StartService();
-        }
-        else if (IsRecording && speakButton.action.ReadValue<float>() == 0)
-        {
-            StopService();
+            timeSinceChanged += Time.deltaTime;
+            if (timeSinceChanged >= 5f)
+            {
+                TableDisplayManager.Instance.SetLabel("Dica: tente pedir um refrigerante!");
+            }
+            if (!IsRecording && speakButton.action.ReadValue<float>() >= 0.99f)
+            {
+                StartService();
+            }
+            else if (IsRecording && speakButton.action.ReadValue<float>() <= 0.001f)
+            {
+                StopService();
+            }
         }
     }
 }
