@@ -30,7 +30,8 @@ public class VoiceServiceHandler : MonoBehaviour
         service.VoiceEvents.OnPartialTranscription.AddListener(OnChange); // teoricamente n precisa desse
         service.VoiceEvents.OnFullTranscription.AddListener(OnChange);
     }
-    void OnChange(string str) {
+    void OnChange(string str)
+    {
         Debug.Log(str);
         transcription = str;
     }
@@ -83,5 +84,9 @@ public class VoiceServiceHandler : MonoBehaviour
                 StopService();
             }
         }
+    }
+    public void ResetTimeSinceChanged()
+    {
+        timeSinceChanged = 0f;
     }
 }

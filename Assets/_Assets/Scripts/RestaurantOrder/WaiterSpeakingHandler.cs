@@ -35,7 +35,7 @@ public class WaiterSpeakingHandler : MonoBehaviour
     if (currentSpeakBehaviorType == CurrentSpeakBehaviorType.ENTER || currentSpeakBehaviorType == CurrentSpeakBehaviorType.STAY)
     {
       RestaurantOrder.Instance.UpdateSpeakState(RestaurantOrder.SpeakState.PLAYER_CAN_SPEAK);
-      // VoiceServiceHandler.Instance.StartService();
+      VoiceServiceHandler.Instance.ResetTimeSinceChanged();
     }
     else if (currentSpeakBehaviorType == CurrentSpeakBehaviorType.LEAVE)
     {
