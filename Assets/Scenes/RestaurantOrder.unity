@@ -4177,7 +4177,7 @@ MonoBehaviour:
       m_PersistentCalls:
         m_Calls: []
   witRuntimeConfiguration:
-    witConfiguration: {fileID: 11400000, guid: 6476a572031a940409b81d263a21a0ba, type: 2}
+    witConfiguration: {fileID: 11400000, guid: a36660b449b01724ab254d7157b5006b, type: 2}
     minKeepAliveVolume: 0.0005
     minKeepAliveTimeInSeconds: 2
     minTranscriptionKeepAliveTimeInSeconds: 1
@@ -7090,6 +7090,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: XR Origin (XR Rig)
       objectReference: {fileID: 0}
+    - target: {fileID: 7711054662201272273, guid: 62de36daa3f94b945aeb14ee8c50ee94,
+        type: 3}
+      propertyPath: leftRay
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 7711054662201272273, guid: 62de36daa3f94b945aeb14ee8c50ee94,
+        type: 3}
+      propertyPath: rightRay
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 7904660200216219212, guid: 62de36daa3f94b945aeb14ee8c50ee94,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -7141,7 +7151,9 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 1908939765699981114, guid: 62de36daa3f94b945aeb14ee8c50ee94, type: 3}
+    - {fileID: 7718073725319599535, guid: 62de36daa3f94b945aeb14ee8c50ee94, type: 3}
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 5918434797955220008, guid: 62de36daa3f94b945aeb14ee8c50ee94,
         type: 3}
@@ -8875,13 +8887,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1537485558}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.00000011920929, y: 0.7071067, z: 0.000000014901161, w: 0.7071068}
-  m_LocalPosition: {x: -0, y: -0.01047, z: -0}
+  m_LocalRotation: {x: 0, y: 0.70710677, z: 0.70710677, w: 0}
+  m_LocalPosition: {x: 0.0002999975, y: -0.0059999935, z: -1.6114787e-10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 18689002979868199}
-  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
+  m_LocalEulerAnglesHint: {x: -90, y: 90, z: 90}
 --- !u!1 &1566139410
 GameObject:
   m_ObjectHideFlags: 0
@@ -9480,15 +9492,15 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1645553262}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.412, y: -3.754, z: 3.978}
+  m_LocalRotation: {x: -0, y: 0.9238794, z: -0, w: 0.38268375}
+  m_LocalPosition: {x: 1.487, y: -3.754, z: -7.281}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1716802026}
   - {fileID: 1693313944}
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 135, z: 0}
 --- !u!1 &1652548394
 GameObject:
   m_ObjectHideFlags: 0
@@ -12824,13 +12836,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2139745433}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.7071066, y: 0.0000000149011115, z: -0.000000014901204, w: 0.70710707}
-  m_LocalPosition: {x: 2.936263e-10, y: 0.0037999847, z: 1.1324837e-10}
+  m_LocalRotation: {x: -0.7010572, y: -0.09229572, z: 0.09229566, w: 0.7010577}
+  m_LocalPosition: {x: 0.0003, y: 0.0079, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8725307693442679298}
-  m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -75, y: -90, z: 90}
 --- !u!33 &8149943173797416
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -18621,6 +18633,8 @@ GameObject:
   - component: {fileID: 1816371597487014717}
   - component: {fileID: 1816371597487014716}
   - component: {fileID: 1816371597487014715}
+  - component: {fileID: 1816371597487014721}
+  - component: {fileID: 1816371597487014720}
   m_Layer: 0
   m_Name: Waiter_V2
   m_TagString: Untagged
@@ -20390,7 +20404,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 2.18
-  m_Speed: 1.4
+  m_Speed: 7
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
@@ -20461,6 +20475,90 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd80262c8e3d8374caff5af8bd250994, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1816371597487014720
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1332745483279587712}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f38ea8c4e294ec4b9d6dc2e5f5c29ab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1816371597487014721
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1332745483279587712}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 591c3d6f017c11b4faa41506d75635b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Voice: {fileID: 737401905}
+  ValidateEarly: 0
+  intent: food_order
+  confidenceThreshold: 0.6
+  valueMatchers:
+  - path: entities.food:food[0].value
+    witValueReference: {fileID: 0}
+    contentRequired: 1
+    matchMethod: 0
+    comparisonMethod: 0
+    matchValue: 
+    floatingPointComparisonTolerance: 0.00009999999747378752
+    allowConfidenceOverlap: 0
+    confidenceRanges: []
+  formattedValueEvents: []
+  onMultiValueEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1816371597487014720}
+        m_TargetAssemblyTypeName: FoodResponseHandler, Assembly-CSharp
+        m_MethodName: SpawnFood
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onDidNotMatch:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1816371597487014720}
+        m_TargetAssemblyTypeName: FoodResponseHandler, Assembly-CSharp
+        m_MethodName: OnError
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onOutOfDomain:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1816371597487014720}
+        m_TargetAssemblyTypeName: 
+        m_MethodName: OnError
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!4 &1818884301970072654
 Transform:
   m_ObjectHideFlags: 0
