@@ -5,6 +5,8 @@ using Meta.WitAi.Configuration;
 using System;
 using Oculus.VoiceSDK.UX;
 using UnityEngine.InputSystem;
+using Meta.WitAi.Json;
+using System.Linq;
 
 public class VoiceServiceHandler : MonoBehaviour
 {
@@ -29,8 +31,15 @@ public class VoiceServiceHandler : MonoBehaviour
     {
         service.VoiceEvents.OnPartialTranscription.AddListener(OnChange); // teoricamente n precisa desse
         service.VoiceEvents.OnFullTranscription.AddListener(OnChange);
+        service.VoiceEvents.OnResponse.AddListener(ParseResponse);
     }
-    void OnChange(string str)
+
+  private void ParseResponse(WitResponseNode arg0)
+  {
+    FoodOrderIntentHandler.Instance.HandleSpawn(arg0.GetAllEntityValues("food:food").Distinct().ToArray());
+  }
+
+  void OnChange(string str)
     {
         Debug.Log(str);
         transcription = str;

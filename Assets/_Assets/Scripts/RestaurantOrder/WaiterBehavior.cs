@@ -16,6 +16,7 @@ public class WaiterBehavior : MonoBehaviour
     public enum WaiterState { WALKING_TO_TABLE, WALKING_TO_KITCHEN, NOT_MOVING }
     private WaiterState currentState;
     private Vector3 currentDestination;
+    [SerializeField] private Transform tray;
 
 
     void Start()
@@ -53,6 +54,14 @@ public class WaiterBehavior : MonoBehaviour
             if (tablesToVisit.Count == 1)
             {
                 SetDestination(table.waitPosition.position); // se so tiver essa mesa na lista, vai direto pra ela. se n tiver é pq ele já deve estar a caminho de outra ou em outra
+                if (RestaurantOrder.Instance.GetOrderState() == RestaurantOrder.OrderState.ON_ORDER)
+                {
+                    ChangeTrayVisibility(true);
+                }
+                else
+                {
+                    ChangeTrayVisibility(false);
+                }
             }
         }
     }
@@ -75,7 +84,14 @@ public class WaiterBehavior : MonoBehaviour
         currentState = WaiterState.WALKING_TO_TABLE;
         agent.destination = destination;
         currentDestination = destination;
-        animationHandler.Walk();
+        if (RestaurantOrder.Instance.GetOrderState() == RestaurantOrder.OrderState.ON_ORDER)
+        {
+            animationHandler.WalkWithOrder();
+        }
+        else
+        {
+            animationHandler.Walk();
+        }
     }
     public void UpdateDestination()
     {
@@ -89,5 +105,9 @@ public class WaiterBehavior : MonoBehaviour
             SetDestination(kitchenDefaultPosition);
             currentState = WaiterState.WALKING_TO_KITCHEN;
         }
+    }
+    public void ChangeTrayVisibility(bool active)
+    {
+        tray.gameObject.SetActive(active);
     }
 }

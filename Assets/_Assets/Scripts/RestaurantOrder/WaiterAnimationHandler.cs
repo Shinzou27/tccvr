@@ -6,9 +6,15 @@ public class WaiterAnimationHandler : MonoBehaviour
 {
     private Animator animator;
     private readonly string WAITING_ANIM = "Waiting";
+    private readonly string WITH_ORDER = "WithOrder";
     void Start()
     {
         animator = GetComponent<Animator>();
+    }
+    public void WalkWithOrder() {
+        animator.SetBool(WITH_ORDER, true);
+        animator.SetBool(WAITING_ANIM, false);
+        Debug.Log("Andando com a bandeja");
     }
     public void Walk() {
         animator.SetBool(WAITING_ANIM, false);

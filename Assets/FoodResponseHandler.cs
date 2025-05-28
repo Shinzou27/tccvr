@@ -12,6 +12,7 @@ public class FoodResponseHandler : MonoBehaviour
   }
   public void OnError(string err)
   {
+    Debug.Log("Errinho");
     Debug.Log(err);
   }
 }
