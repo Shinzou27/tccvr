@@ -11,11 +11,13 @@ public class NPCBehavior : NetworkBehaviour
   private List<Transform> tents;
   private Transform defaultDestination;
   [SerializeField] private NPCAnimationStateHandler animationStateHandler;
+  [SerializeField] private float angleOffsetToCheck;
   private NavMeshAgent agent;
   private bool turned = false;
   private bool reachedTent = false;
   public Action OnDestroyBehavior;
   private NPCDialogue npcDialogue;
+  private TentInfo currentTent;
   // Start is called before the first frame update
   private void SetAgent()
   {
@@ -65,8 +67,10 @@ public class NPCBehavior : NetworkBehaviour
       for (int i = 0; i < tents.Count; i++)
       {
         Transform t = tents[i];
+
+        // Debug.Log($"Angulo entre {gameObject.name} e a tenda {t.name}: {Vector3.Angle(transform.position - t.position, t.right)}");
         // Debug.Log($"Distância do {gameObject.name} à {t.name}: {Vector3.Distance(transform.position, t.position)}");
-        if (Vector3.Distance(transform.position, t.position) < 10)
+        if (Mathf.Abs(Vector3.Angle(transform.position - t.position, t.right) - 90) <= angleOffsetToCheck)
         {
           TentInfo tentInfo = t.GetComponent<TentInfo>();
           float interest = UnityEngine.Random.Range(0, 100);
@@ -79,6 +83,7 @@ public class NPCBehavior : NetworkBehaviour
             tentInfo.IsFree = false;
             tentInfo.customer = gameObject;
             turned = true;
+            currentTent = tentInfo;
           }
           else
           {
@@ -117,7 +122,6 @@ public class NPCBehavior : NetworkBehaviour
         animationStateHandler.OrderCorrect(() =>
         {
           agent.isStopped = false;
-
         });
       }
       else
@@ -129,6 +133,8 @@ public class NPCBehavior : NetworkBehaviour
 
         });
       }
+      currentTent.IsFree = true;
+      currentTent.customer = null;
     }
   }
 }

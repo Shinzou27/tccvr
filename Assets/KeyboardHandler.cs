@@ -20,6 +20,6 @@ public class KeyboardHandler : MonoBehaviour
         });
     }
     public void Write(string digit) {
-        input.text += digit;
+        Utils.OnlineHandle(() => input.text += digit);
     }
 }

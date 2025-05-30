@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class MenuHandler : MonoBehaviour {
   [SerializeField] private PINInputController pinInputController;
@@ -8,15 +9,23 @@ public class MenuHandler : MonoBehaviour {
   [SerializeField] private GameObject pinInputContainer;
   [SerializeField] private GameObject studentListContainer;
   [SerializeField] private GameObject chooseExperienceContainer;
-  public enum MenuState {PIN, LIST, EXPERIENCE}
+  [SerializeField] private Toggle offline;
+  public enum MenuState { PIN, LIST, EXPERIENCE }
   public MenuState current;
   public EnterExperienceParams enterExperienceParams;
   void Start()
   {
     ChangeToPIN();
+    offline.onValueChanged.AddListener(ToggleNetwork);
     pinInputController.onProceedClick = ChangeToList;
     studentListController.onProceedClick = ChangeToExperience;
     chooseExperienceController.UpdateEnterExperienceParams = UpdateEnterExperienceParams;
+  }
+
+  private void ToggleNetwork(bool arg0)
+  {
+    Utils.isOffline = arg0;
+    pinInputController.ChangeVisiblity(arg0);
   }
 
   private void UpdateEnterExperienceParams(EnterExperienceParams _params)

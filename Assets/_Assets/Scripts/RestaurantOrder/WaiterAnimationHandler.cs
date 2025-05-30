@@ -18,10 +18,17 @@ public class WaiterAnimationHandler : MonoBehaviour
     }
     public void Walk() {
         animator.SetBool(WAITING_ANIM, false);
+        animator.SetBool(WITH_ORDER, false);
         Debug.Log("Andando");
     }
     public void Stop() {
         animator.SetBool(WAITING_ANIM, true);
+        animator.SetBool(WITH_ORDER, false);
         Debug.Log("Parando");
+    }
+    public void StopWithOrder() {
+        animator.SetBool(WAITING_ANIM, true);
+        animator.SetBool(WITH_ORDER, true);
+        Debug.Log("Parando com bandeja");
     }
 }

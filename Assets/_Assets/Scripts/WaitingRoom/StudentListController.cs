@@ -16,7 +16,7 @@ public class StudentListController : MonoBehaviour {
     redButton.onClick.AddListener(GoBack);
     greenButton.onClick.AddListener(GoForth);
     InstantiateStudentCards();
-    greenButton.interactable = false;
+    Utils.OnlineHandle(() => greenButton.interactable = false);
   }
   private void OnDisable() {
     redButton.onClick.RemoveListener(GoBack);
@@ -33,10 +33,14 @@ public class StudentListController : MonoBehaviour {
       Destroy(children);
     }
     instantiatedCards.Clear();
-    foreach (Student student in experienceInfo.response.students) {
-      GameObject stCard = Instantiate(stCardPrefab, gridContent);
-      stCard.GetComponent<StudentCardController>().OnCardClick = () => SetSelected(student);
-      stCard.GetComponent<StudentCardController>().SetStudent(student);
+    if (experienceInfo.response.students != null)
+    {
+      foreach (Student student in experienceInfo.response.students)
+      {
+        GameObject stCard = Instantiate(stCardPrefab, gridContent);
+        stCard.GetComponent<StudentCardController>().OnCardClick = () => SetSelected(student);
+        stCard.GetComponent<StudentCardController>().SetStudent(student);
+      }
     }
   }
   public void SetSelected(Student student) {

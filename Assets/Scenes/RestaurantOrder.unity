@@ -2799,6 +2799,7 @@ MonoBehaviour:
     - content: 
       role: 0
   audios: []
+  totalOrder: []
 --- !u!4 &432946258
 Transform:
   m_ObjectHideFlags: 0
@@ -2890,18 +2891,32 @@ MonoBehaviour:
   - prefab: {fileID: 3510289262897869168, guid: 76528ebd906a62c4a96537155b7a476b,
       type: 3}
     keyword: burger
+    price: 14
   - prefab: {fileID: 6294088810042666072, guid: c4a0e1007ffddf14c8fd76cb2b910ee1,
       type: 3}
     keyword: sushi
+    price: 16
   - prefab: {fileID: 820642723256141279, guid: c96a1d7c198ff094d8354d1e4562e8fa, type: 3}
     keyword: soda
+    price: 3
   - prefab: {fileID: 820642723256141279, guid: 053684134c0022742b13e06b85f7e44d, type: 3}
     keyword: water
+    price: 2
   - prefab: {fileID: 820642723256141279, guid: eb45fdc87edd43c48922e3104f89dfb9, type: 3}
     keyword: beer
+    price: 7
   - prefab: {fileID: 3747430764895501598, guid: 83730998d47f4aa418dbe9933da12102,
       type: 3}
-    keyword: wine
+    keyword: juice
+    price: 5
+  - prefab: {fileID: 3510289262897869168, guid: 76528ebd906a62c4a96537155b7a476b,
+      type: 3}
+    keyword: spaghetti
+    price: 12
+  - prefab: {fileID: 3510289262897869168, guid: 76528ebd906a62c4a96537155b7a476b,
+      type: 3}
+    keyword: steak
+    price: 18
   tray: {fileID: 449828121}
 --- !u!1001 &449828120
 PrefabInstance:
@@ -20509,7 +20524,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 2.18
-  m_Speed: 7
+  m_Speed: 1.4
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
@@ -20530,7 +20545,7 @@ Animator:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1332745483279587712}
   m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: 83b56018662ce3140bc294a93e15c8f0, type: 3}
+  m_Avatar: {fileID: 9000000, guid: 347903faa93e0e84b80c0210437e3d96, type: 3}
   m_Controller: {fileID: 9100000, guid: 217af50d76e7cfc4f89d79fd66ded1a3, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0

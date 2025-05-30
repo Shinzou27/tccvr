@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 4154306708645350446}
   - component: {fileID: 8887617224549600088}
   m_Layer: 0
-  m_Name: Wine
+  m_Name: Juice
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

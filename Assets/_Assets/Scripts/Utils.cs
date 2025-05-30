@@ -4,7 +4,8 @@ using System.Linq;
 using UnityEngine;
 public static class Utils
 {
-  public static bool isHost;
+  public static bool isHost = true;
+  public static bool isOffline;
   public static int[] GenerateRandomFruitAmountDivisions(int totalAmount, int differentFruitsCount)
   {
     if (differentFruitsCount <= 0) differentFruitsCount = 1;
@@ -40,7 +41,8 @@ public static class Utils
   }
   public static string FormatFruitList(List<OrderSet> list)
   {
-    if (list == null || !list.Any()) {
+    if (list == null || !list.Any())
+    {
       Debug.Log("N funfou");
       return string.Empty;
     }
@@ -80,7 +82,8 @@ public static class Utils
 
     return position;
   }
-  public static Order GenerateOrder() {
+  public static Order GenerateOrder()
+  {
     int fruitAmount = UnityEngine.Random.Range(0, FruitShop.Instance.maxFruitAmount) + 1;
     int uniqueFruits = UnityEngine.Random.Range(0, FruitShop.Instance.maxUniqueFruits) + 1;
     if (fruitAmount < uniqueFruits) fruitAmount = uniqueFruits;
@@ -89,18 +92,35 @@ public static class Utils
     Shuffle(fruits);
     int[] sets = GenerateRandomFruitAmountDivisions(fruitAmount, uniqueFruits);
     Order order = new();
-    for(int i = 0; i < sets.Length; i++) {
-        order.list.Add(new(fruits[i], sets[i]));
+    for (int i = 0; i < sets.Length; i++)
+    {
+      order.list.Add(new(fruits[i], sets[i]));
     }
     order.amountOnOrder = fruitAmount;
     return order;
   }
-  public static Order GetOrderFromTentCustomer(TentInfo info) {
+  public static Order GetOrderFromTentCustomer(TentInfo info)
+  {
     if (!info.customer) return null;
     info.customer.TryGetComponent(out NPCFruitOrderController component);
-    if (component != null) {
+    if (component != null)
+    {
       return component.order;
     }
     return null;
+  }
+  public static void OfflineHandle(Action action)
+  {
+    if (isOffline)
+    {
+      action.Invoke();
+    }
+  }
+  public static void OnlineHandle(Action action)
+  {
+    if (!isOffline)
+    {
+      action.Invoke();
+    }
   }
 }

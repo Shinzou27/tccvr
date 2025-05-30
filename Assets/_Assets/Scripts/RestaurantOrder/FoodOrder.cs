@@ -5,4 +5,5 @@ public struct FoodOrder
 {
   public GameObject prefab;
   public string keyword;
+  public float price;
 }

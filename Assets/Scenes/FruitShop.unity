@@ -772,9 +772,10 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 5db444369c78f0641aa9da9b16232832, type: 2}
   - {fileID: 11400000, guid: 645523f05dc92ae439129fe6b8c4cf93, type: 2}
   maxUniqueFruits: 3
-  maxFruitAmount: 6
+  maxFruitAmount: 4
   rounds: 3
   interestRate: 0.351
+  IsCustomerTalking: 0
   fruitsPlacedByPlayer:
     list: []
     amountOnOrder: 0
@@ -13147,9 +13148,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefabs:
-  - {fileID: 7010383242418914042, guid: 0809d094db1ff8e4b8221b60274ae20b, type: 3}
-  - {fileID: 811935944534537132, guid: 451b70dec515f284a83201e42ade6d61, type: 3}
-  - {fileID: 3361919394654727595, guid: c18b7261326152b47a32e665a02d197d, type: 3}
+  - {fileID: 7010383242418914042, guid: 78991be95337df246ba3b24759e04f91, type: 3}
+  - {fileID: 811935944534537132, guid: efa9fe877e58a5a42bc2872555b2359b, type: 3}
+  - {fileID: 3361919394654727595, guid: e2f69ab629f0459479e4ec5dca694691, type: 3}
   players: 16
 --- !u!4 &1020347103
 Transform:
@@ -13180,10 +13181,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefabs:
   - {fileID: 5358671611973272012, guid: e6ea20a59d908814a9a5f608c9ec197a, type: 3}
-  maxCount: 15
+  maxCount: 25
   defaultDestinationLeft: {fileID: 747004393}
   defaultDestinationRight: {fileID: 1225440643}
-  spawnInterval: 2
+  spawnInterval: 2.5
 --- !u!1 &1027676222
 GameObject:
   m_ObjectHideFlags: 0

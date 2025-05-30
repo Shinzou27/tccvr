@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 524971919304130693}
   - component: {fileID: 6228428727378433352}
   - component: {fileID: 4874424876502349504}
-  - component: {fileID: 8580567290574639785}
   m_Layer: 0
   m_Name: Tray
   m_TagString: Untagged
@@ -85,15 +84,3 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &8580567290574639785
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6204827854435832554}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 00d684ec452a53d419b0e81845fddd93, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

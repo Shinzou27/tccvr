@@ -51,13 +51,14 @@ public class WaiterSpeakingHandler : MonoBehaviour
     switch (RestaurantOrder.Instance.GetOrderState())
     {
       case RestaurantOrder.OrderState.GREETING:
-        dialogue = "Hello! It's friday! Who did it, did it.";
+        dialogue = "Hello! Did you already check the menu tonight?";
         break;
       case RestaurantOrder.OrderState.ON_ORDER:
-        dialogue = "Apologies for the wait. Here is you order.";
+        dialogue = "Apologies for the wait. Here is you order. Do you want anything more?";
         break;
       case RestaurantOrder.OrderState.WAITING_PAYMENT:
-        dialogue = "Ok, so... Here is your bill!";
+        string bill = RestaurantOrder.Instance.GetBillDetails();
+        dialogue = "Ok, so, here is your bill. " + bill;
         break;
     }
     // speaker.
@@ -65,14 +66,14 @@ public class WaiterSpeakingHandler : MonoBehaviour
     RestaurantOrder.Instance.UpdatePrompt(new(dialogue, PromptMessage.Role.assistant));
     currentSpeakBehaviorType = CurrentSpeakBehaviorType.ENTER;
   }
-  public void SpeakStay(string dialogue = "Hello! It's friday! Who did it, did it.")
+  public void SpeakStay(string dialogue = "Hello! Did you already check the menu tonight?")
   {
     Debug.Log("B");
     // speaker.
     Speak(dialogue);
     currentSpeakBehaviorType = CurrentSpeakBehaviorType.STAY;
   }
-  public void SpeakLeave(string dialogue = "Hello! It's friday! Who did it, did it.")
+  public void SpeakLeave(string dialogue = "Hello! Did you already check the menu tonight?")
   {
     Debug.Log("C");
     // speaker.

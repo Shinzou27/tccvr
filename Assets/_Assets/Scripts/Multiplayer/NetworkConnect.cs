@@ -35,9 +35,13 @@ public class NetworkConnect : MonoBehaviour
     }
   }
 
-  public void StartHost()
+  public async void StartHost()
   {
     Debug.LogError("StartHost");
+    if (!StoredNetworkData.IsRoomCreated())
+    {
+      await StoredNetworkData.CreateRelay();
+    }
     Debug.Log(StoredNetworkData.allocation);
     Debug.Log(StoredNetworkData.joinCode);
 

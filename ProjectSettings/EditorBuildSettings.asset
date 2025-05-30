@@ -5,10 +5,10 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/WaitingRoom.unity
     guid: 23b7a927a82b5e44884b43aa6c6adbd6
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/FruitShop.unity
     guid: f7fa201b0c98bd9459360ae8e5678948
   - enabled: 1

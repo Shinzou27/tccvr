@@ -35,16 +35,41 @@ MonoBehaviour:
     isPrivate: 1
     createdAt: 2025-04-17T14:34:32-0700
     trainingStatus: 1
-    lastTrainDuration: 84
-    lastTrainedAt: 2025-05-28T08:53:33-0700
-    nextTrainAt: 2025-05-28T08:52:09-0700
+    lastTrainDuration: 48
+    lastTrainedAt: 2025-05-30T09:54:04-0700
+    nextTrainAt: 2025-05-30T09:53:16-0700
     intents:
     - id: 591144196822299
       name: food_order
       entities:
       - name: food:food
         id: 1208932067450493
+    - id: 9738475599611852
+      name: wit$negation
+      entities:
+      - name: apologies:apologies
+        id: 635710802966176
+    - id: 1698680597706959
+      name: wit$repeat_response
+      entities:
+      - name: repeat:repeat
+        id: 1757357141862943
     entities:
+    - name: apologies
+      id: 1083930313576952
+      lookups:
+      - free-text
+      - keywords
+      roles:
+      - name: apologies
+        id: 635710802966176
+      keywords:
+      - keyword: Sorry
+        synonyms:
+        - sorry
+      - keyword: don't have
+        synonyms:
+        - don't have
     - name: food
       id: 3554286771534779
       lookups:
@@ -107,6 +132,24 @@ MonoBehaviour:
       - keyword: wine
         synonyms:
         - wine
+    - name: repeat
+      id: 1204781924175224
+      lookups:
+      - free-text
+      - keywords
+      roles:
+      - name: repeat
+        id: 1757357141862943
+      keywords:
+      - keyword: again
+        synonyms:
+        - again
+      - keyword: repeat
+        synonyms:
+        - repeat
+      - keyword: understand
+        synonyms:
+        - understand
     - name: wit$datetime
       id: 535a810f-8911-4bfe-976a-6e3c193f1251
       lookups: []

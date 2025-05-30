@@ -24,7 +24,7 @@ public class FoodOrderIntentHandler : MonoBehaviour
   {
     foreach (string value in values)
     {
-      GameObject go = GetFoodPrefab(value);
+      GameObject go = GetFood(value);
       if (go != null)
       {
         Instantiate(go, tray);
@@ -32,12 +32,13 @@ public class FoodOrderIntentHandler : MonoBehaviour
     }
 
   }
-  private GameObject GetFoodPrefab(string value)
+  private GameObject GetFood(string value)
   {
     foreach (FoodOrder food in foods)
     {
       if (value == food.keyword)
       {
+        RestaurantOrder.Instance.AddToOrder(food); //TODO: com ctz tem algum canto melhor pra chamar isso 
         return food.prefab;
       }
     }

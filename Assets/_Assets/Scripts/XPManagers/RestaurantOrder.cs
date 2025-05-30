@@ -10,6 +10,7 @@ public class RestaurantOrder : BaseManager<RestaurantOrder>
   public enum SpeakState { NONE, PLAYER_CAN_SPEAK, WAITING_WAITER, WAITER_SPEAKING, PLAYER_SPEAKING }
   private SpeakState currentSpeakState;
   private OrderState currentOrderState;
+  public List<FoodOrder> totalOrder;
   void Start()
   {
     prompt = new();
@@ -84,5 +85,35 @@ public class RestaurantOrder : BaseManager<RestaurantOrder>
       default:
         return "...";
     }
+  }
+  public void AddToOrder(FoodOrder food)
+  {
+    totalOrder.Add(food);
+  }
+  public float GetBill()
+  {
+    float bill = 0f;
+    foreach (FoodOrder order in totalOrder)
+    {
+      bill += order.price;
+    }
+    return bill;
+  }
+  public string GetBillDetails()
+  {
+    string toReturn = "";
+    if (totalOrder.Count == 0)
+    {
+      toReturn = "As you did not ordered anything, we will charge you only for 4 dollars.";
+    }
+    else
+    {
+      foreach (FoodOrder order in totalOrder)
+      {
+        toReturn += $"One {order.keyword}: {order.price} dollars. ";
+      }
+      toReturn += $"So, the total charge will be {GetBill()} dollars.";
+    }
+    return toReturn;
   }
 }

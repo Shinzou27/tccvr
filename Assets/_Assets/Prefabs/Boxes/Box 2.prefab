@@ -193,8 +193,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.0032000004, y: 0.004999999, z: 0.00010114908}
-  m_Center: {x: -1.4901161e-10, y: -1.4901162e-10, z: 0.000050575753}
+  m_Size: {x: 0.0032000004, y: 0.004999999, z: 0.001011491}
+  m_Center: {x: -1.4901161e-10, y: -1.4901162e-10, z: -0.0005057575}
 --- !u!114 &-7042879139026615013
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -208,7 +208,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fruitToSpawn: {fileID: 11400000, guid: 2c03329e66385be4e9092dcc584a979a, type: 2}
-  amount: 5
+  amount: 4
   pivot: {fileID: 595865521948112878}
 --- !u!1 &2241549670058757774
 GameObject:

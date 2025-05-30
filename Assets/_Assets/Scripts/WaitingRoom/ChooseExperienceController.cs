@@ -10,11 +10,11 @@ using UnityEngine.SceneManagement;
 public class ChooseExperienceController : MonoBehaviour
 {
   [SerializeField] private ExperienceInfo experience;
-  [SerializeField] private TextMeshProUGUI errorLog;
-  private readonly int maxConnection = 20;
+  // [SerializeField] private TextMeshProUGUI errorLog;
   private const string FRUIT_SHOP = "FruitShop";
   private const string RESTAURANT_ORDER = "RestaurantOrder";
   public Action<EnterExperienceParams> UpdateEnterExperienceParams;
+  private bool clicked = false;
 
   async void Awake()
   {
@@ -24,12 +24,18 @@ public class ChooseExperienceController : MonoBehaviour
 
   public void GoToFruitShop()
   {
-    GoToScene(FRUIT_SHOP);
+    if (!clicked) {
+      clicked = true;
+      GoToScene(FRUIT_SHOP);
+    }
   }
 
   public void GoToRestaurantOrder()
   {
-    GoToScene(RESTAURANT_ORDER);
+    if (!clicked) {
+      clicked = true;
+      GoToScene(RESTAURANT_ORDER);
+    }
   }
 
   public void GoToScene(string scene)
@@ -48,17 +54,16 @@ public class ChooseExperienceController : MonoBehaviour
 
   private async void CreateRelay(Action callback)
   {
-    Debug.LogError("Criando a sala, sou o primeiro a entrar");
-    Allocation allocation = await RelayService.Instance.CreateAllocationAsync(maxConnection);
-    string joinCode = await RelayService.Instance.GetJoinCodeAsync(allocation.AllocationId);
-    StoredNetworkData.allocation = allocation;
-    StoredNetworkData.joinCode = joinCode;
-    Debug.LogError(joinCode);
-    EnterExperienceParams _params = new()
+    await StoredNetworkData.CreateRelay();
+    Utils.OnlineHandle(() =>
     {
-      joinCode = joinCode,
-    };
-    UpdateEnterExperienceParams.Invoke(_params);
-    EnterExperienceRequest.Instance.StartRequest(_params, callback, error => errorLog.text = error);
+      EnterExperienceParams _params = new()
+      {
+        joinCode = StoredNetworkData.joinCode,
+      };
+      UpdateEnterExperienceParams.Invoke(_params);
+      EnterExperienceRequest.Instance.StartRequest(_params, callback, error => Debug.LogError(error));
+    });
+    Utils.OfflineHandle(callback);
   }
 }

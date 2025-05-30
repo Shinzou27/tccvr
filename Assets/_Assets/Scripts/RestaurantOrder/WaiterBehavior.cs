@@ -73,7 +73,14 @@ public class WaiterBehavior : MonoBehaviour
             // Debug.Log($"distancia XZ: {xzDistance}");
             if (xzDistance < 0.25f)
             {
-                animationHandler.Stop();
+                if (RestaurantOrder.Instance.GetOrderState() == RestaurantOrder.OrderState.ON_ORDER)
+                {
+                    animationHandler.Stop();
+                }
+                else
+                {
+                    animationHandler.StopWithOrder();
+                }
                 currentState = WaiterState.NOT_MOVING;
                 speakingHandler.SpeakEnter();
             }

@@ -53,7 +53,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fruitToSpawn: {fileID: 11400000, guid: ae4b15d216606dd4aa53e7dc1a00ea66, type: 2}
-  amount: 9
+  amount: 6
   pivot: {fileID: 812318734542834451}
 --- !u!33 &3211790705966055539
 MeshFilter:
@@ -208,8 +208,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.0031800007, y: 0.0047442215, z: 0.00016175526}
-  m_Center: {x: -1.4901161e-10, y: -1.4901162e-10, z: 0.00008087867}
+  m_Size: {x: 0.0031800007, y: 0.0047442215, z: 0.001617553}
+  m_Center: {x: -1.4901161e-10, y: -1.4901162e-10, z: -0.0008087867}
 --- !u!1 &3952783080413001527
 GameObject:
   m_ObjectHideFlags: 0
