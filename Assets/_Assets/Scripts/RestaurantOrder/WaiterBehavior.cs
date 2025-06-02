@@ -111,6 +111,10 @@ public class WaiterBehavior : MonoBehaviour
         {
             SetDestination(kitchenDefaultPosition);
             currentState = WaiterState.WALKING_TO_KITCHEN;
+            if (RestaurantOrder.Instance.GetOrderState() == RestaurantOrder.OrderState.WAITING_PAYMENT)
+            {
+                RestaurantOrder.Instance.OnEndSession(5);
+            }
         }
     }
     public void ChangeTrayVisibility(bool active)

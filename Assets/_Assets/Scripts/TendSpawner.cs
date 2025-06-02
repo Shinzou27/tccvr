@@ -32,6 +32,7 @@ public class TendSpawner : NetworkBehaviour
     if (IsServer)
     {
       SpawnTent(playerNumber);
+      FruitShop.Instance.StartCounter();
     }
     else
     {

@@ -16,8 +16,7 @@ public class NPCDialogue : MonoBehaviour
         EventManager.Instance.OnOrderCreated += Greet;
         speaker.Events.OnPlaybackStart.AddListener(HandleStartAudio);
         speaker.Events.OnPlaybackComplete.AddListener(HandleCompleteAudio);
-        VoiceServiceHandler.Instance.OnApology += LeaveNoFruit;
-        VoiceServiceHandler.Instance.OnRepeatRequest += Repeat;
+
     }
 
     private void HandleStartAudio(TTSSpeaker arg0, TTSClipData arg1)
@@ -33,8 +32,6 @@ public class NPCDialogue : MonoBehaviour
     void OnDestroy()
     {
         EventManager.Instance.OnOrderCreated -= Greet;
-        VoiceServiceHandler.Instance.OnApology -= LeaveNoFruit;
-        VoiceServiceHandler.Instance.OnRepeatRequest -= Repeat;
         speaker.Events.OnPlaybackStart.RemoveListener(HandleStartAudio);
         speaker.Events.OnPlaybackComplete.RemoveListener(HandleCompleteAudio);
     }

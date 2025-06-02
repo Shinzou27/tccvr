@@ -31,12 +31,28 @@ public class NPCBehavior : NetworkBehaviour
     npcDialogue = GetComponent<NPCDialogue>();
     SetAgent();
     EventManager.Instance.OnOrderDone += LeaveTent;
+    VoiceServiceHandler.Instance.OnApology += LeaveNoFruit;
+    VoiceServiceHandler.Instance.OnRepeatRequest += Repeat;
     tents = new(GameObject.FindGameObjectsWithTag("Tent").Select((go) => go.transform));
   }
+
+  private void Repeat()
+  {
+    npcDialogue.Repeat();
+  }
+
+  private void LeaveNoFruit()
+  {
+    npcDialogue.LeaveNoFruit();
+    currentTent.Add(FruitShop.PointValues.DO_NOT_HAVE_FRUIT_CORRECT);
+  }
+
   public override void OnDestroy()
   {
     base.OnDestroy();
     EventManager.Instance.OnOrderDone -= LeaveTent;
+    VoiceServiceHandler.Instance.OnApology -= LeaveNoFruit;
+    VoiceServiceHandler.Instance.OnRepeatRequest -= Repeat;
   }
   private void Update()
   {
@@ -123,6 +139,7 @@ public class NPCBehavior : NetworkBehaviour
         {
           agent.isStopped = false;
         });
+        currentTent.Add(FruitShop.PointValues.CORRECT_ORDER);
       }
       else
       {
@@ -132,6 +149,7 @@ public class NPCBehavior : NetworkBehaviour
           agent.isStopped = false;
 
         });
+        currentTent.Subtract(FruitShop.PointValues.WRONG_ORDER);
       }
       currentTent.IsFree = true;
       currentTent.customer = null;
