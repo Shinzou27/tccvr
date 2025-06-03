@@ -19,8 +19,8 @@ public class VoiceServiceHandler : MonoBehaviour
   public bool IsRecording = false;
   public string transcription;
   private float timeSinceChanged = 0;
-  public Action OnRepeatRequest;
-  public Action OnApology;
+  public Action<int> OnRepeatRequest;
+  public Action<int> OnApology;
   // private AudioClip recordedClip;
   // private const int SampleRate = 16000;
   // private const int MaxRecordingSeconds = 10;
@@ -49,18 +49,16 @@ public class VoiceServiceHandler : MonoBehaviour
     if (FoodOrderIntentHandler.Instance != null)
     { //TODO: melhorar essa verificacao depois
       FoodOrderIntentHandler.Instance.HandleSpawn(arg0.GetAllEntityValues("food:food").Distinct().ToArray());
-    }
-    else
-    {
+    } else {
       string[] apologiesEntities = arg0.GetAllEntityValues("apologies:apologies").Distinct().ToArray();
       string[] repeatEntities = arg0.GetAllEntityValues("repeat:repeat").Distinct().ToArray();
       if (repeatEntities.Length > 0)
       {
-        OnRepeatRequest.Invoke();
+        OnRepeatRequest.Invoke(VRRigRereferences.Singleton.playerNumber);
       }
       else if (apologiesEntities.Length > 0)
       {
-        OnApology.Invoke();
+        OnApology.Invoke(VRRigRereferences.Singleton.playerNumber);
       }
     }
     
@@ -77,13 +75,19 @@ public class VoiceServiceHandler : MonoBehaviour
     _request = service.Activate(new WitRequestOptions(), new VoiceServiceRequestEvents());
     // recordedClip = Microphone.Start(null, false, MaxRecordingSeconds, SampleRate);
     IsRecording = true;
-    RestaurantOrder.Instance.UpdateSpeakState(RestaurantOrder.SpeakState.PLAYER_SPEAKING);
+    if (RestaurantOrder.Instance != null)
+    {
+      RestaurantOrder.Instance.UpdateSpeakState(RestaurantOrder.SpeakState.PLAYER_SPEAKING);
+    }
   }
 
   public void StopService()
   {
-    RestaurantOrder.Instance.UpdateSpeakState(RestaurantOrder.SpeakState.WAITING_WAITER);
-    EventManager.Instance.OnPlayerFinishedSpeaking?.Invoke(this, transcription);
+    if (RestaurantOrder.Instance != null)
+    {
+      RestaurantOrder.Instance.UpdateSpeakState(RestaurantOrder.SpeakState.WAITING_WAITER);
+      EventManager.Instance.OnPlayerFinishedSpeaking?.Invoke(this, transcription);
+    }
     Debug.Log("terminando gravacao");
     IsRecording = false;
     if (_request != null)

@@ -36,15 +36,28 @@ public class NPCBehavior : NetworkBehaviour
     tents = new(GameObject.FindGameObjectsWithTag("Tent").Select((go) => go.transform));
   }
 
-  private void Repeat()
+  private void Repeat(int playerNumber)
   {
-    npcDialogue.Repeat();
+    if (playerNumber == currentTent.playerNumber)
+    {
+      npcDialogue.Repeat();
+    }
   }
 
-  private void LeaveNoFruit()
+  private void LeaveNoFruit(int playerNumber)
   {
-    npcDialogue.LeaveNoFruit();
-    currentTent.Add(FruitShop.PointValues.DO_NOT_HAVE_FRUIT_CORRECT);
+    if (playerNumber == currentTent.playerNumber)
+    {
+      npcDialogue.LeaveNoFruit();
+      currentTent.Add(FruitShop.PointValues.DO_NOT_HAVE_FRUIT_CORRECT);
+      agent.destination = defaultDestination.position;
+      animationStateHandler.OrderIncorrect(() =>
+      {
+        agent.isStopped = false;
+      });
+      currentTent.IsFree = true;
+      currentTent.customer = null;
+    }
   }
 
   public override void OnDestroy()

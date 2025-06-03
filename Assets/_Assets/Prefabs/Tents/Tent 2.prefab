@@ -283,6 +283,10 @@ Transform:
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 3529630443919978265}
+  - {fileID: 6941074467756762734}
+  - {fileID: 1680442814260039093}
+  - {fileID: 2915953607457221209}
+  - {fileID: 2280967761601414994}
   - {fileID: 7509871698763535701}
   - {fileID: 424770869750904813}
   - {fileID: 999644052862675899}
@@ -322,10 +326,6 @@ Transform:
   - {fileID: 3555052434817177538}
   - {fileID: 8171066295377018376}
   - {fileID: 6888235767190058179}
-  - {fileID: 6941074467756762734}
-  - {fileID: 1680442814260039093}
-  - {fileID: 2915953607457221209}
-  - {fileID: 2280967761601414994}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &5477217774799875184
@@ -383,6 +383,7 @@ MonoBehaviour:
   IsFree: 1
   customer: {fileID: 0}
   pointController: {fileID: 0}
+  playerNumber: 0
 --- !u!114 &8605010903694464832
 MonoBehaviour:
   m_ObjectHideFlags: 0

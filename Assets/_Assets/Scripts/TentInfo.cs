@@ -7,6 +7,7 @@ public class TentInfo : MonoBehaviour, IPointBearer {
   public bool IsFree = true;
   public GameObject customer;
   public PointController pointController;
+  public int playerNumber;
   void Start()
   {
     pointController = GetComponent<PointController>();

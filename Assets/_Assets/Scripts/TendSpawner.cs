@@ -54,6 +54,7 @@ public class TendSpawner : NetworkBehaviour
     Quaternion rotation = Quaternion.Euler(0, (playerNumber % 2 == 0) ? 0 : 180, 0);
     GameObject tent = Instantiate(prefabs[Random.Range(0, prefabs.Count)], position, rotation);
     tent.GetComponent<TentInfo>().direction = (playerNumber % 2 == 0) ? -1 : 1;
+    tent.GetComponent<TentInfo>().playerNumber = playerNumber;
     NetworkObject networkObject = tent.GetComponent<NetworkObject>();
     networkObject.Spawn();
     Transform playerSpawnPoint = tent.GetComponent<TentInfo>()._transform;
