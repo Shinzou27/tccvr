@@ -96,7 +96,6 @@ public class NPCBehavior : NetworkBehaviour
       for (int i = 0; i < tents.Count; i++)
       {
         Transform t = tents[i];
-
         // Debug.Log($"Angulo entre {gameObject.name} e a tenda {t.name}: {Vector3.Angle(transform.position - t.position, t.right)}");
         // Debug.Log($"Distância do {gameObject.name} à {t.name}: {Vector3.Distance(transform.position, t.position)}");
         if (Mathf.Abs(Vector3.Angle(transform.position - t.position, t.right) - 90) <= angleOffsetToCheck)
@@ -104,6 +103,7 @@ public class NPCBehavior : NetworkBehaviour
           TentInfo tentInfo = t.GetComponent<TentInfo>();
           float interest = UnityEngine.Random.Range(0, 100);
           bool shouldGo = tentInfo.IsFree && interest <= FruitShop.Instance.interestRate * 100;
+          if (!tentInfo.hasPlayer) shouldGo = false;
           Debug.Log($"Interesse do {gameObject.name} na {t.name}: " + interest);
           if (shouldGo)
           {

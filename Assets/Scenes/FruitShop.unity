@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.20254607, g: 0.35276252, b: 0.46877128, a: 1}
+  m_IndirectSpecularColor: {r: 0.57770085, g: 0.6152049, b: 0.60846514, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -4385,8 +4385,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1020347103}
   - component: {fileID: 1020347101}
-  - component: {fileID: 1020347102}
   - component: {fileID: 1020347104}
+  - component: {fileID: 1020347105}
   m_Layer: 0
   m_Name: TentSpawner
   m_TagString: Untagged
@@ -4415,23 +4415,6 @@ MonoBehaviour:
   SpawnWithObservers: 1
   DontDestroyWithOwner: 0
   AutoObjectParentSync: 1
---- !u!114 &1020347102
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1020347100}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8f92b2b6f6ce00148a4acb588dad47f3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  prefabs:
-  - {fileID: 7010383242418914042, guid: 78991be95337df246ba3b24759e04f91, type: 3}
-  - {fileID: 811935944534537132, guid: efa9fe877e58a5a42bc2872555b2359b, type: 3}
-  - {fileID: 3361919394654727595, guid: e2f69ab629f0459479e4ec5dca694691, type: 3}
-  players: 16
 --- !u!4 &1020347103
 Transform:
   m_ObjectHideFlags: 0
@@ -4465,6 +4448,23 @@ MonoBehaviour:
   defaultDestinationLeft: {fileID: 747004393}
   defaultDestinationRight: {fileID: 1225440643}
   spawnInterval: 2.5
+--- !u!114 &1020347105
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1020347100}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a8aaf342ae01eae40bdb56d8e92ca39c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefabs:
+  - {fileID: 7010383242418914042, guid: 78991be95337df246ba3b24759e04f91, type: 3}
+  - {fileID: 811935944534537132, guid: efa9fe877e58a5a42bc2872555b2359b, type: 3}
+  - {fileID: 3361919394654727595, guid: e2f69ab629f0459479e4ec5dca694691, type: 3}
+  players: 16
 --- !u!1 &1028452932
 GameObject:
   m_ObjectHideFlags: 0

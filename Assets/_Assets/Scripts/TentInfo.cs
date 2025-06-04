@@ -1,6 +1,7 @@
+using Unity.Netcode;
 using UnityEngine;
 
-public class TentInfo : MonoBehaviour, IPointBearer {
+public class TentInfo : NetworkBehaviour, IPointBearer {
   public Transform _transform;
   public Transform npcStopPoint;
   public int direction;
@@ -8,6 +9,7 @@ public class TentInfo : MonoBehaviour, IPointBearer {
   public GameObject customer;
   public PointController pointController;
   public int playerNumber;
+  public bool hasPlayer;
   void Start()
   {
     pointController = GetComponent<PointController>();
