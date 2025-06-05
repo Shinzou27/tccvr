@@ -55,6 +55,7 @@ public class RestaurantOrder : BaseManager<RestaurantOrder>
   public void UpdateOrderState(int newState)
   {
     currentOrderState = (OrderState)newState;
+    TableDisplayManager.Instance.SetOrderState(currentOrderState.ToString());
   }
   public void UpdateSpeakState(SpeakState newState)
   {

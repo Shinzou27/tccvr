@@ -89,11 +89,13 @@ public class WaiterSpeakingHandler : MonoBehaviour
   {
     float elapsed = 0;
     TableDisplayManager.Instance.SetLabel("Aguarde o garçom voltar à cozinha.");
+    TableDisplayManager.Instance.SetWaiterToRed();
     while (elapsed < waiterReturnTime)
     {
       elapsed += Time.deltaTime;
       yield return null;
     }
+    TableDisplayManager.Instance.SetWaiterToGreen();
     RestaurantOrder.Instance.UpdateSpeakState(RestaurantOrder.SpeakState.NONE);
 
   }

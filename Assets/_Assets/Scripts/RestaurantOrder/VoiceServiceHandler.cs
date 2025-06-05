@@ -73,6 +73,10 @@ public class VoiceServiceHandler : MonoBehaviour
   {
     Debug.Log(str);
     transcription = str;
+    if (RestaurantOrder.Instance != null)
+    {
+      TableDisplayManager.Instance.SetTranscription(str);
+    }
   }
   public void StartService()
   {

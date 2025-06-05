@@ -77,6 +77,7 @@ Library: C:\Users\felip\UnityProjects\TCCVR\Temp\BurstOutput\tempburstlibs\arm64
 --assembly-defines=VoiceSDK.Telemetry.Runtime;
 --generate-link-xml=Temp\burst.link.xml
 --temp-folder=C:\Users\felip\UnityProjects\TCCVR\Temp\Burst
+--debug=Full
 --key-folder=C:/Program Files/Unity/Hub/Editor/2022.3.20f1/Editor/Data/PlaybackEngines/AndroidPlayer
 --decode-folder=C:\Users\felip\UnityProjects\TCCVR\Library\Burst
 --output=C:\Users\felip\UnityProjects\TCCVR\Temp\BurstOutput\tempburstlibs\arm64-v8a\lib_burst_generated
@@ -197,6 +198,7 @@ Library: C:\Users\felip\UnityProjects\TCCVR\Temp\BurstOutput\tempburstlibs\arm64
 --assembly-defines=VoiceSDK.Telemetry.Runtime;
 --generate-link-xml=Temp\burst.link.xml
 --temp-folder=C:\Users\felip\UnityProjects\TCCVR\Temp\Burst
+--debug=Full
 --key-folder=C:/Program Files/Unity/Hub/Editor/2022.3.20f1/Editor/Data/PlaybackEngines/AndroidPlayer
 --decode-folder=C:\Users\felip\UnityProjects\TCCVR\Library\Burst
 --output=C:\Users\felip\UnityProjects\TCCVR\Temp\BurstOutput\tempburstlibs\arm64-v8a\lib_burst_generated
@@ -382,6 +384,7 @@ Library: C:\Users\felip\UnityProjects\TCCVR\Temp\BurstOutput\tempburstlibs\arm64
 --assembly-defines=VoiceSDK.Telemetry.Runtime;
 --generate-link-xml=Temp\burst.link.xml
 --temp-folder=C:\Users\felip\UnityProjects\TCCVR\Temp\Burst
+--debug=Full
 --key-folder=C:/Program Files/Unity/Hub/Editor/2022.3.20f1/Editor/Data/PlaybackEngines/AndroidPlayer
 --decode-folder=C:\Users\felip\UnityProjects\TCCVR\Library\Burst
 --output=C:\Users\felip\UnityProjects\TCCVR\Temp\BurstOutput\tempburstlibs\arm64-v8a\lib_burst_generated
