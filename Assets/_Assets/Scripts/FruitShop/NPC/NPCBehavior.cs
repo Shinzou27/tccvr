@@ -41,6 +41,7 @@ public class NPCBehavior : NetworkBehaviour
     Debug.Log(playerNumber + " | " + currentTent.playerNumber);
     if (playerNumber == currentTent.playerNumber)
     {
+      Debug.Log(gameObject.name + " falando.");
       npcDialogue.Repeat();
     }
   }
@@ -58,6 +59,7 @@ public class NPCBehavior : NetworkBehaviour
       });
       currentTent.IsFree = true;
       currentTent.customer = null;
+      currentTent = null;
     }
   }
 

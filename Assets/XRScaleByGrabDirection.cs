@@ -9,6 +9,8 @@ public class XRScaleByGrabDirection : MonoBehaviour
     public Collider leftHandCollider;
     public Collider rightHandCollider;
     public float scaleMultiplier = 1f;
+    public float minScaleDistortion = 0.5f;
+    public float maxScaleDistortion = 1.5f;
 
     private XRGrabInteractable grabInteractable;
     private Transform pointA;
@@ -56,7 +58,7 @@ public class XRScaleByGrabDirection : MonoBehaviour
 
         float yDiff = pointB.position.y - pointA.position.y;
         Vector3 newScale = targetToScale.localScale;
-        newScale.y = Mathf.Max(0.01f, newScale.y + (yDiff * scaleMultiplier * Time.deltaTime));
+        newScale.x = Mathf.Clamp(Mathf.Max(0.01f, newScale.y + (yDiff * scaleMultiplier * Time.deltaTime)), minScaleDistortion, maxScaleDistortion);
         targetToScale.localScale = newScale;
     }
 }

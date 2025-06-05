@@ -75,11 +75,13 @@ public class WaiterBehavior : MonoBehaviour
             {
                 if (RestaurantOrder.Instance.GetOrderState() == RestaurantOrder.OrderState.ON_ORDER)
                 {
-                    animationHandler.Stop();
+                    Debug.Log("Garçom ta com pedido");
+                    animationHandler.StopWithOrder();
                 }
                 else
                 {
-                    animationHandler.StopWithOrder();
+                    Debug.Log("Garçom n ta com pedido");
+                    animationHandler.Stop();
                 }
                 currentState = WaiterState.NOT_MOVING;
                 speakingHandler.SpeakEnter();

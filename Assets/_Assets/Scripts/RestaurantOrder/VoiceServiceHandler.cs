@@ -8,6 +8,7 @@ using UnityEngine.InputSystem;
 using Meta.WitAi.Json;
 using System.Linq;
 using UnityEngine.SceneManagement;
+using Meta.WitAi.Composer.Integrations;
 
 public class VoiceServiceHandler : MonoBehaviour
 {
@@ -48,6 +49,7 @@ public class VoiceServiceHandler : MonoBehaviour
   {
     if (FoodOrderIntentHandler.Instance != null)
     { //TODO: melhorar essa verificacao depois
+      Debug.Log(arg0.GetResponseText());
       FoodOrderIntentHandler.Instance.HandleSpawn(arg0.GetAllEntityValues("food:food").Distinct().ToArray());
     } else {
       string[] apologiesEntities = arg0.GetAllEntityValues("apologies:apologies").Distinct().ToArray();
