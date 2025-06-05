@@ -52,8 +52,11 @@ public class VoiceServiceHandler : MonoBehaviour
     } else {
       string[] apologiesEntities = arg0.GetAllEntityValues("apologies:apologies").Distinct().ToArray();
       string[] repeatEntities = arg0.GetAllEntityValues("repeat:repeat").Distinct().ToArray();
+      Debug.Log("bbb");
       if (repeatEntities.Length > 0)
       {
+        Debug.Log("OnRepeatRequest.Invoke");
+        Debug.Log(VRRigRereferences.Singleton.playerNumber);
         OnRepeatRequest.Invoke(VRRigRereferences.Singleton.playerNumber);
       }
       else if (apologiesEntities.Length > 0)

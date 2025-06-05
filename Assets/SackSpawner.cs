@@ -9,6 +9,7 @@ public class SackSpawner : MonoBehaviour
     [SerializeField] private GameObject prefab;
     [SerializeField] private InputActionProperty gripL;
     [SerializeField] private InputActionProperty gripR;
+    [SerializeField] private TentInfo tent;
 
     private bool pressed = false;
     private InputActionProperty pressedInput;
@@ -22,6 +23,7 @@ public class SackSpawner : MonoBehaviour
             GameObject sack = Instantiate(prefab);
             sack.transform.localScale *= 0.5f;
             instantiated = sack;
+            sack.GetComponentInChildren<OnFruitPlaceHandler>().SetTent(tent);
             pressed = true;
             pressedInput = gripL;
             handWhoInstantiated = other.GetComponent<XRDirectInteractor>();
@@ -32,6 +34,7 @@ public class SackSpawner : MonoBehaviour
             GameObject sack = Instantiate(prefab);
             sack.transform.localScale *= 0.5f;
             instantiated = sack;
+            sack.GetComponentInChildren<OnFruitPlaceHandler>().SetTent(tent);
             pressed = true;
             pressedInput = gripR;
             handWhoInstantiated = other.GetComponent<XRDirectInteractor>();

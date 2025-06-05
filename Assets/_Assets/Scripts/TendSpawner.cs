@@ -55,6 +55,7 @@ public class TendSpawner : NetworkBehaviour
     GameObject tent = Instantiate(prefabs[Random.Range(0, prefabs.Count)], position, rotation);
     tent.GetComponent<TentInfo>().direction = (playerNumber % 2 == 0) ? -1 : 1;
     tent.GetComponent<TentInfo>().playerNumber = playerNumber;
+    tent.GetComponent<TentInfo>().hasPlayer = true;
     NetworkObject networkObject = tent.GetComponent<NetworkObject>();
     networkObject.Spawn();
     Transform playerSpawnPoint = tent.GetComponent<TentInfo>()._transform;

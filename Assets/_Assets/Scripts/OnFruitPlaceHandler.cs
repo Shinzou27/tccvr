@@ -6,8 +6,10 @@ using UnityEngine;
 public class OnFruitPlaceHandler : MonoBehaviour
 {
     [SerializeField] private TentInfo tent;
-    private void OnTriggerEnter(Collider other) {
-        if (other.gameObject.CompareTag("Fruit")) {
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Fruit"))
+        {
             // Debug.Log("Deixei uma fruta aqui: " + other.gameObject.name);
             if (other.gameObject.TryGetComponent(out FruitInfo info))
             {
@@ -25,5 +27,9 @@ public class OnFruitPlaceHandler : MonoBehaviour
                 }
             }
         }
+    }
+    public void SetTent(TentInfo tentInfo)
+    {
+        tent = tentInfo;
     }
 }

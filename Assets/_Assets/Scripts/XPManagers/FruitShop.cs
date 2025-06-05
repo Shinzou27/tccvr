@@ -52,5 +52,6 @@ public class FruitShop : BaseManager<FruitShop>
   {
     started = true;
     OnEndSession(maxTime);
+    Debug.Log("AA");
   }
 }

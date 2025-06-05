@@ -378,7 +378,7 @@ MonoBehaviour:
   maxUniqueFruits: 3
   maxFruitAmount: 4
   rounds: 3
-  interestRate: 0.351
+  interestRate: 1
   IsCustomerTalking: 0
   fruitsPlacedByPlayer:
     list: []

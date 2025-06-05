@@ -38,6 +38,7 @@ public class NPCBehavior : NetworkBehaviour
 
   private void Repeat(int playerNumber)
   {
+    Debug.Log(playerNumber + " | " + currentTent.playerNumber);
     if (playerNumber == currentTent.playerNumber)
     {
       npcDialogue.Repeat();

@@ -11,6 +11,7 @@ public class RestaurantOrder : BaseManager<RestaurantOrder>
   private SpeakState currentSpeakState;
   private OrderState currentOrderState;
   public List<FoodOrder> totalOrder;
+  public float orderPrepareTime;
   void Start()
   {
     prompt = new();
