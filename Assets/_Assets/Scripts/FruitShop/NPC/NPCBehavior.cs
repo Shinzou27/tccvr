@@ -18,6 +18,7 @@ public class NPCBehavior : NetworkBehaviour
   public Action OnDestroyBehavior;
   private NPCDialogue npcDialogue;
   private TentInfo currentTent;
+  private bool goingToDefault = true;
   // Start is called before the first frame update
   private void SetAgent()
   {
@@ -38,28 +39,36 @@ public class NPCBehavior : NetworkBehaviour
 
   private void Repeat(int playerNumber)
   {
-    Debug.Log(playerNumber + " | " + currentTent.playerNumber);
-    if (playerNumber == currentTent.playerNumber)
+    if (currentTent != null)
     {
-      Debug.Log(gameObject.name + " falando.");
-      npcDialogue.Repeat();
+      Debug.Log(playerNumber + " | " + currentTent.playerNumber);
+      if (playerNumber == currentTent.playerNumber)
+      {
+        Debug.Log(gameObject.name + " falando.");
+        npcDialogue.Repeat();
+      }
     }
   }
 
   private void LeaveNoFruit(int playerNumber)
   {
-    if (playerNumber == currentTent.playerNumber)
+    if (currentTent != null)
     {
-      npcDialogue.LeaveNoFruit();
-      currentTent.Add(FruitShop.PointValues.DO_NOT_HAVE_FRUIT_CORRECT);
-      agent.destination = defaultDestination.position;
-      animationStateHandler.OrderIncorrect(() =>
+      if (playerNumber == currentTent.playerNumber)
       {
-        agent.isStopped = false;
-      });
-      currentTent.IsFree = true;
-      currentTent.customer = null;
-      currentTent = null;
+        npcDialogue.LeaveNoFruit();
+        currentTent.Add(FruitShop.PointValues.DO_NOT_HAVE_FRUIT_CORRECT);
+        agent.destination = defaultDestination.position;
+        goingToDefault = true;
+        animationStateHandler.OrderIncorrect(() =>
+        {
+          agent.isStopped = false;
+        });
+        currentTent.IsFree = true;
+        FruitShop.Instance.PlayerCanSpeak = false;
+        currentTent.customer = null;
+        currentTent = null;
+      }
     }
   }
 
@@ -67,15 +76,24 @@ public class NPCBehavior : NetworkBehaviour
   {
     base.OnDestroy();
     EventManager.Instance.OnOrderDone -= LeaveTent;
-    VoiceServiceHandler.Instance.OnApology -= LeaveNoFruit;
-    VoiceServiceHandler.Instance.OnRepeatRequest -= Repeat;
+    if (VoiceServiceHandler.Instance != null)
+    {
+      VoiceServiceHandler.Instance.OnApology -= LeaveNoFruit;
+      VoiceServiceHandler.Instance.OnRepeatRequest -= Repeat;
+    }
   }
   private void Update()
   {
+    if (FruitShop.Instance.GetRemainingTime() < 0.1f) return;
     if (Input.GetKeyDown(KeyCode.D)) ChangeDestination(1, tents[0]);
-    if (agent.remainingDistance <= 1.5f && !agent.isStopped && !reachedTent)
+    if (agent.remainingDistance <= 1.5f && !agent.isStopped)
     {
-      if (turned)
+      if (goingToDefault && IsServer)
+      {
+          // Debug.Log("Serei destruído.");
+          OnDestroyBehavior?.Invoke();
+          Destroy(gameObject);
+      } else if (turned)
       {
         // Debug.Log("Cheguei na tenda");
         animationStateHandler.WaitingOrder();
@@ -83,14 +101,6 @@ public class NPCBehavior : NetworkBehaviour
         reachedTent = true;
         EventManager.Instance.OnOrderCreated?.Invoke(this, gameObject);
         AllowOnOrderCreatedClientRpc();
-      }
-      else
-      {
-        if (IsServer) {
-          // Debug.Log("Não tive interesse em tenda alguma e serei destruído.");
-          OnDestroyBehavior?.Invoke();
-          Destroy(gameObject);
-        }
       }
     }
     // Debug.Log($"Distância do {gameObject.name} ao destino: {Vector3.Distance(transform.position, agent.destination)}");
@@ -107,10 +117,10 @@ public class NPCBehavior : NetworkBehaviour
           float interest = UnityEngine.Random.Range(0, 100);
           bool shouldGo = tentInfo.IsFree && interest <= FruitShop.Instance.interestRate * 100;
           if (!tentInfo.hasPlayer) shouldGo = false;
-          Debug.Log($"Interesse do {gameObject.name} na {t.name}: " + interest);
+          // Debug.Log($"Interesse do {gameObject.name} na {t.name}: " + interest);
           if (shouldGo)
           {
-            Debug.Log("Indo para a tenda");
+            // Debug.Log("Indo para a tenda");
             ChangeDestination(tentInfo.direction, tentInfo.npcStopPoint);
             tentInfo.IsFree = false;
             tentInfo.customer = gameObject;
@@ -136,18 +146,21 @@ public class NPCBehavior : NetworkBehaviour
     defaultDestination = destination;
     SetAgent();
     agent.destination = defaultDestination.position;
+    goingToDefault = true;
   }
   public void ChangeDestination(float dir, Transform tentToGo)
   {
     agent.isStopped = true;
     agent.destination = tentToGo.position;
     animationStateHandler.Turn(dir, () => agent.isStopped = false);
+    goingToDefault = false;
   }
   public void LeaveTent(object sender, EventManager.OnOrderDoneArgs onOrderDoneArgs)
   {
     if (onOrderDoneArgs.customer == gameObject)
     {
       agent.destination = defaultDestination.position;
+      goingToDefault = true;
       if (onOrderDoneArgs.isCorrect)
       {
         npcDialogue.LeaveCorrect();
@@ -163,12 +176,13 @@ public class NPCBehavior : NetworkBehaviour
         animationStateHandler.OrderIncorrect(() =>
         {
           agent.isStopped = false;
-
         });
         currentTent.Subtract(FruitShop.PointValues.WRONG_ORDER);
       }
       currentTent.IsFree = true;
+      FruitShop.Instance.PlayerCanSpeak = false;
       currentTent.customer = null;
+      currentTent = null;
     }
   }
 }

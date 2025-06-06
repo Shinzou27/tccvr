@@ -22,10 +22,12 @@ public class NPCDialogue : MonoBehaviour
     private void HandleStartAudio(TTSSpeaker arg0, TTSClipData arg1)
     {
         FruitShop.Instance.IsCustomerTalking = true;
+        FruitShop.Instance.PlayerCanSpeak = false;
     }
     private void HandleCompleteAudio(TTSSpeaker arg0, TTSClipData arg1)
     {
         FruitShop.Instance.IsCustomerTalking = false;
+        FruitShop.Instance.PlayerCanSpeak = true;
     }
 
 

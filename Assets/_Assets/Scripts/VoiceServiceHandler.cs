@@ -47,7 +47,7 @@ public class VoiceServiceHandler : MonoBehaviour
 
   private void ParseResponse(WitResponseNode arg0)
   {
-    if (FoodOrderIntentHandler.Instance != null)
+    if (RestaurantOrder.Instance != null)
     { //TODO: melhorar essa verificacao depois
       Debug.Log(arg0.GetResponseText());
       FoodOrderIntentHandler.Instance.HandleSpawn(arg0.GetAllEntityValues("food:food").Distinct().ToArray());
@@ -55,6 +55,8 @@ public class VoiceServiceHandler : MonoBehaviour
       string[] apologiesEntities = arg0.GetAllEntityValues("apologies:apologies").Distinct().ToArray();
       string[] repeatEntities = arg0.GetAllEntityValues("repeat:repeat").Distinct().ToArray();
       Debug.Log("bbb");
+      Debug.Log("apologiesEntities: " + apologiesEntities.Length);
+      Debug.Log("repeatEntities: " + repeatEntities.Length);
       if (repeatEntities.Length > 0)
       {
         Debug.Log("OnRepeatRequest.Invoke");
@@ -63,6 +65,8 @@ public class VoiceServiceHandler : MonoBehaviour
       }
       else if (apologiesEntities.Length > 0)
       {
+        Debug.Log("OnApology.Invoke");
+        Debug.Log(VRRigRereferences.Singleton.playerNumber);
         OnApology.Invoke(VRRigRereferences.Singleton.playerNumber);
       }
     }
@@ -71,7 +75,6 @@ public class VoiceServiceHandler : MonoBehaviour
 
   void OnChange(string str)
   {
-    Debug.Log(str);
     transcription = str;
     if (RestaurantOrder.Instance != null)
     {
@@ -151,7 +154,7 @@ public class VoiceServiceHandler : MonoBehaviour
   }
   public void CheckMicOnFruitShop()
   {
-    if (!FruitShop.Instance.IsCustomerTalking)
+    if (FruitShop.Instance.PlayerCanSpeak)
     {
       if (!IsRecording && speakButton.action.ReadValue<float>() >= 0.99f)
       {

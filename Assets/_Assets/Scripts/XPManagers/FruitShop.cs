@@ -8,10 +8,9 @@ public class FruitShop : BaseManager<FruitShop>
   public List<FruitSO> fruits;
   public int maxUniqueFruits;
   public int maxFruitAmount;
-  public int rounds;
   [Range(0, 1)] public float interestRate;
   public bool IsCustomerTalking;
-  public Order fruitsPlacedByPlayer = new();
+  public bool PlayerCanSpeak;
   public int maxTime;
   private float elapsed;
   private bool started;
@@ -23,19 +22,16 @@ public class FruitShop : BaseManager<FruitShop>
     public const int WRONG_ORDER = 50;
     public const int HELPING = 50;
   }
-  public bool EvaluateOrder(Order customerOrder)
+  public bool EvaluateOrder(Order customerOrder, Order fruitsOnSack)
   {
+    if (customerOrder.amountOnOrder != fruitsOnSack.amountOnOrder) return false;
     foreach (OrderSet set in customerOrder.list)
     {
-      OrderSet setPlacedByPlayer = fruitsPlacedByPlayer.GetOrderSet(set.fruit.type);
+      OrderSet setPlacedByPlayer = fruitsOnSack.GetOrderSet(set.fruit.type);
       if (setPlacedByPlayer == null) return false;
       if (setPlacedByPlayer.amount != set.amount) return false;
     }
     return true;
-  }
-  public void ClearOrder()
-  {
-    fruitsPlacedByPlayer = new();
   }
   void Update()
   {
@@ -51,7 +47,11 @@ public class FruitShop : BaseManager<FruitShop>
   public void StartCounter()
   {
     started = true;
-    OnEndSession(maxTime);
-    Debug.Log("AA");
+    OnEndSession(maxTime, Clear);
+  }
+  public void Clear()
+  {
+    started = false;
+    elapsed = 0f;
   }
 }

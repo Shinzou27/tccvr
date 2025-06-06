@@ -7,6 +7,7 @@ using UnityEngine;
 public class NPCAnimationStateHandler : NetworkBehaviour
 {
     private Animator animator;
+    [SerializeField] private GameObject sack;
     void Start()
     {
         animator = GetComponent<Animator>();
@@ -28,7 +29,12 @@ public class NPCAnimationStateHandler : NetworkBehaviour
         animator.SetBool("OrderSucceeded", true);
         // animator.ResetTrigger("Thanking");
         DebugAnimationLength();
-        StartCoroutine(ExecuteAfterAnimationEnd("WalkingTurn", action));
+        StartCoroutine(ExecuteAfterAnimationEnd("WalkingTurn", () =>
+        {
+            action();
+            sack.SetActive(true);
+        }
+        ));
     }
     public void OrderIncorrect(Action action) {
         animator.SetBool("OrderDone", true);

@@ -65,7 +65,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: PONTOS
+  m_text: POINTS
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ae90889fd96e002429ccb03eaf6b5806, type: 2}
   m_sharedMaterial: {fileID: 4990331657312757007, guid: ae90889fd96e002429ccb03eaf6b5806,
@@ -917,7 +917,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Jogador:'
+  m_text: 'Player:'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ae90889fd96e002429ccb03eaf6b5806, type: 2}
   m_sharedMaterial: {fileID: 4990331657312757007, guid: ae90889fd96e002429ccb03eaf6b5806,

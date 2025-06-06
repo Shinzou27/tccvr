@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 1462297097786812747}
   - component: {fileID: 4154306708645350446}
   - component: {fileID: 8887617224549600088}
+  - component: {fileID: -3497052895369309816}
   m_Layer: 0
   m_Name: Juice
   m_TagString: Untagged
@@ -264,3 +265,16 @@ MonoBehaviour:
   m_StartingSingleGrabTransformers: []
   m_StartingMultipleGrabTransformers: []
   m_AddDefaultGrabTransformers: 1
+--- !u!114 &-3497052895369309816
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3747430764895501598}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7661464986eccb146be93713e9d4639b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  destination: {fileID: 0}

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -18,13 +19,14 @@ public class BaseManager<T> : MonoBehaviour where T : BaseManager<T>
         }
     }
 
-    private IEnumerator CountdownToLeave(int time)
+    private IEnumerator CountdownToLeave(int time, Action callback)
     {
         yield return new WaitForSeconds(time);
+        callback();
         SceneManager.LoadSceneAsync("WaitingRoom");
     }
-    public void OnEndSession(int time)
+    public void OnEndSession(int time, Action callback)
     {
-        StartCoroutine(CountdownToLeave(time));
+        StartCoroutine(CountdownToLeave(time, callback));
     }
 }

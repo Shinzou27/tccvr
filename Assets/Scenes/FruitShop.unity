@@ -377,13 +377,9 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 645523f05dc92ae439129fe6b8c4cf93, type: 2}
   maxUniqueFruits: 3
   maxFruitAmount: 4
-  rounds: 3
-  interestRate: 1
+  interestRate: 0.35
   IsCustomerTalking: 0
-  fruitsPlacedByPlayer:
-    list: []
-    amountOnOrder: 0
-    _dynamic: 1
+  PlayerCanSpeak: 0
   maxTime: 360
 --- !u!114 &49173845
 MonoBehaviour:

@@ -66,7 +66,7 @@ public class TendSpawner : NetworkBehaviour
     });
     spawned.Add(tent);
     TriggerOnPlayerEnterClientRpc(playerNumber, playerSpawnPoint.position, playerSpawnPoint.rotation);
-    Debug.Log("spawn tent");
+    // Debug.Log("spawn tent");
   }
   [ClientRpc]
   private void TriggerOnPlayerEnterClientRpc(int playerNumber, Vector3 position, Quaternion rotation)

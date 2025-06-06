@@ -7,6 +7,8 @@ public class FoodOrderIntentHandler : MonoBehaviour
   public static FoodOrderIntentHandler Instance;
   public List<FoodOrder> foods;
   [SerializeField] private Transform tray;
+  [SerializeField] private Transform plate;
+  [SerializeField] private Transform cup;
 
   void Awake()
   {
@@ -27,7 +29,8 @@ public class FoodOrderIntentHandler : MonoBehaviour
       GameObject go = GetFood(value);
       if (go != null)
       {
-        Instantiate(go, tray);
+        GameObject food = Instantiate(go, tray);
+        food.GetComponent<FoodTrayTransporter>().destination = plate;
       }
     }
 

@@ -32,8 +32,14 @@ public class WaiterBehavior : MonoBehaviour
         EventManager.Instance.OnOpenAIResponseStay += SpeakButStay;
         EventManager.Instance.OnOpenAIResponseLeave += PrepareToLeave;
     }
+  void OnDestroy()
+  {
+        EventManager.Instance.OnWaiterCalled -= InsertTable;
+        EventManager.Instance.OnOpenAIResponseStay -= SpeakButStay;
+        EventManager.Instance.OnOpenAIResponseLeave -= PrepareToLeave;
+  }
 
-    private void SpeakButStay(object sender, string e)
+  private void SpeakButStay(object sender, string e)
     {
         speakingHandler.SpeakStay(e);
     }
@@ -50,9 +56,11 @@ public class WaiterBehavior : MonoBehaviour
     {
         if (table != null)
         {
+            if (tablesToVisit.Contains(table)) return;
             tablesToVisit.Add(table);
             if (tablesToVisit.Count == 1)
             {
+                currentState = WaiterState.WALKING_TO_TABLE;
                 SetDestination(table.waitPosition.position); // se so tiver essa mesa na lista, vai direto pra ela. se n tiver é pq ele já deve estar a caminho de outra ou em outra
                 if (RestaurantOrder.Instance.GetOrderState() == RestaurantOrder.OrderState.ON_ORDER)
                 {
@@ -67,7 +75,7 @@ public class WaiterBehavior : MonoBehaviour
     }
     void Update()
     {
-        if (currentState == WaiterState.WALKING_TO_TABLE)
+        if (currentState != WaiterState.NOT_MOVING)
         {
             float xzDistance = Vector3.Distance(new Vector3(transform.position.x, 0, transform.position.z), new Vector3(currentDestination.x, 0, currentDestination.z));
             // Debug.Log($"distancia XZ: {xzDistance}");
@@ -83,17 +91,19 @@ public class WaiterBehavior : MonoBehaviour
                     Debug.Log("Garçom n ta com pedido");
                     animationHandler.Stop();
                 }
+                if (currentState == WaiterState.WALKING_TO_TABLE)
+                {
+                    speakingHandler.SpeakEnter();
+                }
                 currentState = WaiterState.NOT_MOVING;
-                speakingHandler.SpeakEnter();
             }
         }
     }
     private void SetDestination(Vector3 destination)
     {
-        currentState = WaiterState.WALKING_TO_TABLE;
         agent.destination = destination;
         currentDestination = destination;
-        if (RestaurantOrder.Instance.GetOrderState() == RestaurantOrder.OrderState.ON_ORDER)
+        if (RestaurantOrder.Instance.GetOrderState() == RestaurantOrder.OrderState.ON_ORDER && currentState == WaiterState.WALKING_TO_TABLE)
         {
             animationHandler.WalkWithOrder();
         }
@@ -107,15 +117,16 @@ public class WaiterBehavior : MonoBehaviour
         RemoveTable(tablesToVisit[0]);
         if (tablesToVisit.Count > 0)
         {
+            currentState = WaiterState.WALKING_TO_TABLE;
             SetDestination(tablesToVisit[0].waitPosition.position);
         }
         else
         {
-            SetDestination(kitchenDefaultPosition);
             currentState = WaiterState.WALKING_TO_KITCHEN;
-            if (RestaurantOrder.Instance.GetOrderState() == RestaurantOrder.OrderState.WAITING_PAYMENT)
+            SetDestination(kitchenDefaultPosition);
+            if (RestaurantOrder.Instance.GetOrderState() == RestaurantOrder.OrderState.PAYMENT_DONE)
             {
-                RestaurantOrder.Instance.OnEndSession(5);
+                RestaurantOrder.Instance.OnEndSession(5, RestaurantOrder.Instance.Clear);
             }
         }
     }

@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.0032028765, g: 0.0063423906, b: 0.014481477, a: 1}
+  m_IndirectSpecularColor: {r: 0.003204829, g: 0.0063439845, b: 0.014498586, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -469,7 +469,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1693313945}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: GetTranscription, Assembly-CSharp
         m_MethodName: OnClick
         m_Mode: 1
@@ -2919,6 +2919,8 @@ MonoBehaviour:
     keyword: steak
     price: 18
   tray: {fileID: 449828121}
+  plate: {fileID: 3591790040507252039}
+  cup: {fileID: 1073136958}
 --- !u!1001 &449828120
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5804,6 +5806,37 @@ Transform:
   m_Children: []
   m_Father: {fileID: 589388494}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1073136957
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1073136958}
+  m_Layer: 0
+  m_Name: Cup Position
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1073136958
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1073136957}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: -1.4589, y: 1.3354083, z: -3.9701}
+  m_LocalScale: {x: 100, y: 100, z: 100}
+  m_ConstrainProportionsScale: 1
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
 --- !u!65 &1077050519
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -9619,7 +9652,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1716802026}
-  - {fileID: 1693313944}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 135, z: 0}
 --- !u!1 &1652548394
@@ -9653,50 +9685,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1808366202}
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
---- !u!1 &1693313943
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1693313944}
-  - component: {fileID: 1693313945}
-  m_Layer: 0
-  m_Name: DebugGetTranscription
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1693313944
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1693313943}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1645553263}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1693313945
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1693313943}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 534ad734ebb22304e875bb4d9c5457db, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!65 &1694584081
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -18755,8 +18743,6 @@ GameObject:
   - component: {fileID: 1816371597487014717}
   - component: {fileID: 1816371597487014716}
   - component: {fileID: 1816371597487014715}
-  - component: {fileID: 1816371597487014721}
-  - component: {fileID: 1816371597487014720}
   m_Layer: 0
   m_Name: Waiter_V2
   m_TagString: Untagged
@@ -20526,7 +20512,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 2.18
-  m_Speed: 1.4
+  m_Speed: 4.2
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
@@ -20598,90 +20584,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd80262c8e3d8374caff5af8bd250994, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1816371597487014720
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1332745483279587712}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3f38ea8c4e294ec4b9d6dc2e5f5c29ab, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &1816371597487014721
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1332745483279587712}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 591c3d6f017c11b4faa41506d75635b9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Voice: {fileID: 737401905}
-  ValidateEarly: 0
-  intent: food_order
-  confidenceThreshold: 0.6
-  valueMatchers:
-  - path: entities.food:food[0].value
-    witValueReference: {fileID: 0}
-    contentRequired: 1
-    matchMethod: 0
-    comparisonMethod: 0
-    matchValue: 
-    floatingPointComparisonTolerance: 0.00009999999747378752
-    allowConfidenceOverlap: 0
-    confidenceRanges: []
-  formattedValueEvents: []
-  onMultiValueEvent:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1816371597487014720}
-        m_TargetAssemblyTypeName: FoodResponseHandler, Assembly-CSharp
-        m_MethodName: SpawnFood
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  onDidNotMatch:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1816371597487014720}
-        m_TargetAssemblyTypeName: FoodResponseHandler, Assembly-CSharp
-        m_MethodName: OnError
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  onOutOfDomain:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1816371597487014720}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: OnError
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!4 &1818884301970072654
 Transform:
   m_ObjectHideFlags: 0
@@ -32821,7 +32723,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!33 &4829784950532024901
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -33359,8 +33261,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8984345189219841251, guid: 00bb5ab9271abe8439b3e37ba52941f4,
         type: 3}
+      propertyPath: m_LocalScale.x
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8984345189219841251, guid: 00bb5ab9271abe8439b3e37ba52941f4,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8984345189219841251, guid: 00bb5ab9271abe8439b3e37ba52941f4,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8984345189219841251, guid: 00bb5ab9271abe8439b3e37ba52941f4,
+        type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.2781
+      value: -1.297
       objectReference: {fileID: 0}
     - target: {fileID: 8984345189219841251, guid: 00bb5ab9271abe8439b3e37ba52941f4,
         type: 3}
@@ -33370,7 +33287,7 @@ PrefabInstance:
     - target: {fileID: 8984345189219841251, guid: 00bb5ab9271abe8439b3e37ba52941f4,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -3.5837
+      value: -3.627
       objectReference: {fileID: 0}
     - target: {fileID: 8984345189219841251, guid: 00bb5ab9271abe8439b3e37ba52941f4,
         type: 3}
@@ -33380,17 +33297,17 @@ PrefabInstance:
     - target: {fileID: 8984345189219841251, guid: 00bb5ab9271abe8439b3e37ba52941f4,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 8984345189219841251, guid: 00bb5ab9271abe8439b3e37ba52941f4,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: 0.0000004768371
       objectReference: {fileID: 0}
     - target: {fileID: 8984345189219841251, guid: 00bb5ab9271abe8439b3e37ba52941f4,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 8984345189219841251, guid: 00bb5ab9271abe8439b3e37ba52941f4,
         type: 3}
@@ -37306,14 +37223,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2959709490616482563}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.48721963, y: 0.6032527, z: 0.5124618, w: 0.36889866}
-  m_LocalPosition: {x: -1.2994, y: 1.42, z: -3.7785}
+  m_LocalRotation: {x: 0.33013365, y: 0.5702753, z: 0.6054702, w: 0.44632253}
+  m_LocalPosition: {x: -1.2942, y: 1.4198, z: -3.8596}
   m_LocalScale: {x: 100, y: 100, z: 100}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1423181300}
   m_Father: {fileID: 543450653154415820}
-  m_LocalEulerAnglesHint: {x: -15, y: 102.107, z: 90}
+  m_LocalEulerAnglesHint: {x: -23.321, y: 81.761, z: 86.952}
 --- !u!4 &5927741648648039217
 Transform:
   m_ObjectHideFlags: 0
@@ -50689,3 +50606,4 @@ SceneRoots:
   - {fileID: 1361351833}
   - {fileID: 1816371597487014714}
   - {fileID: 4933925786535760334}
+  - {fileID: 1073136958}

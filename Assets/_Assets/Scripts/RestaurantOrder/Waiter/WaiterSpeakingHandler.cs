@@ -32,15 +32,27 @@ public class WaiterSpeakingHandler : MonoBehaviour
     //TODO: logica de mandar o audio pra requisicao
     Debug.Log("Terminou de falar");
     RestaurantOrder.Instance.audios.Add(arg1.clip);
-    if (currentSpeakBehaviorType == CurrentSpeakBehaviorType.ENTER || currentSpeakBehaviorType == CurrentSpeakBehaviorType.STAY)
+    switch (currentSpeakBehaviorType)
     {
-      RestaurantOrder.Instance.UpdateSpeakState(RestaurantOrder.SpeakState.PLAYER_CAN_SPEAK);
-      VoiceServiceHandler.Instance.ResetTimeSinceChanged();
-    }
-    else if (currentSpeakBehaviorType == CurrentSpeakBehaviorType.LEAVE)
-    {
-      StartCoroutine(WaitToUpdateDisplay());
-      LeaveTableAction();
+      case CurrentSpeakBehaviorType.ENTER:
+        if (RestaurantOrder.Instance.GetOrderState() == RestaurantOrder.OrderState.ON_ORDER)
+        {
+          Debug.Log("Botando a comida no prato");
+          EventManager.Instance.OnDropFoodOnTable?.Invoke(this, EventArgs.Empty);    
+        }
+        RestaurantOrder.Instance.UpdateSpeakState(RestaurantOrder.SpeakState.PLAYER_CAN_SPEAK);
+        VoiceServiceHandler.Instance.ResetTimeSinceChanged();
+        break;
+      case CurrentSpeakBehaviorType.STAY:
+        RestaurantOrder.Instance.UpdateSpeakState(RestaurantOrder.SpeakState.PLAYER_CAN_SPEAK);
+        VoiceServiceHandler.Instance.ResetTimeSinceChanged();
+        break;
+      case CurrentSpeakBehaviorType.LEAVE:
+        StartCoroutine(WaitToUpdateDisplay());
+        LeaveTableAction();
+        break;
+      default:
+        break;
     }
   }
 

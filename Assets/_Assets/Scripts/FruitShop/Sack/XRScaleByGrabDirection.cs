@@ -5,22 +5,27 @@ public class XRScaleByGrabDirection : MonoBehaviour
 {
     public Transform leftPoint;
     public Transform rightPoint;
-    public Transform targetToScale;
     public Collider leftHandCollider;
     public Collider rightHandCollider;
     public float scaleMultiplier = 1f;
-    public float minScaleDistortion = 0.5f;
-    public float maxScaleDistortion = 1.5f;
+    public float minScaleDistortion = 0.25f;
+    public float maxScaleDistortion = 2f;
 
     private XRGrabInteractable grabInteractable;
     private Transform pointA;
     private Transform pointB;
+    private Vector3 initialScale;
+    private float defaultDistance;
 
-    void Awake()
+    void Start()
     {
         grabInteractable = GetComponent<XRGrabInteractable>();
         grabInteractable.selectEntered.AddListener(OnGrab);
         grabInteractable.selectExited.AddListener(OnRelease);
+        leftHandCollider = VRRigRereferences.Singleton.leftHand.GetComponent<Collider>();
+        rightHandCollider = VRRigRereferences.Singleton.rightHand.GetComponent<Collider>();
+        initialScale = transform.localScale;
+        defaultDistance = Vector3.Distance(leftPoint.position, rightPoint.position);
     }
 
     void OnDestroy()
@@ -56,9 +61,15 @@ public class XRScaleByGrabDirection : MonoBehaviour
         if (pointA == null || pointB == null)
             return;
 
-        float yDiff = pointB.position.y - pointA.position.y;
-        Vector3 newScale = targetToScale.localScale;
-        newScale.x = Mathf.Clamp(Mathf.Max(0.01f, newScale.y + (yDiff * scaleMultiplier * Time.deltaTime)), minScaleDistortion, maxScaleDistortion);
-        targetToScale.localScale = newScale;
+        float yDiff = pointA.position.y - pointB.position.y;
+        // Debug.Log(yDiff);
+        float t = Mathf.InverseLerp(-defaultDistance, defaultDistance, yDiff);
+        // Debug.Log(t);
+        float scaleFactor = Mathf.Lerp(minScaleDistortion, maxScaleDistortion, t);
+        // Debug.Log(scaleFactor);
+
+        Vector3 newScale = new Vector3(initialScale.x * scaleFactor, initialScale.y, initialScale.z);
+        transform.localScale = newScale;
     }
+
 }

@@ -30,7 +30,7 @@ public class NetworkedGrab : NetworkBehaviour
 
     void OnExitGrab(SelectExitEventArgs args)
     {
-        Debug.Log($"acabei de dar SelectExit");
+        // Debug.Log($"acabei de dar SelectExit");
         EnableNetworkTransformServerRpc(true);
     }
 
@@ -40,7 +40,7 @@ public class NetworkedGrab : NetworkBehaviour
         var netObj = GetComponent<NetworkObject>();
         netObj.ChangeOwnership(clientId);
         EnableNetworkTransformClientRpc(false);
-        Debug.Log($"Dono desse GameObject: {netObj.OwnerClientId}");
+        // Debug.Log($"Dono desse GameObject: {netObj.OwnerClientId}");
     }
 
     [ClientRpc]

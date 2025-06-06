@@ -6,7 +6,7 @@ public class RestaurantOrder : BaseManager<RestaurantOrder>
   public List<Table> tables;
   public Prompt prompt;
   public List<AudioClip> audios;
-  public enum OrderState { GREETING, ON_ORDER, WAITING_PAYMENT }
+  public enum OrderState { GREETING, ON_ORDER, WAITING_PAYMENT, PAYMENT_DONE }
   public enum SpeakState { NONE, PLAYER_CAN_SPEAK, WAITING_WAITER, WAITER_SPEAKING, PLAYER_SPEAKING }
   private SpeakState currentSpeakState;
   private OrderState currentOrderState;
@@ -75,15 +75,15 @@ public class RestaurantOrder : BaseManager<RestaurantOrder>
     switch (newState)
     {
       case SpeakState.NONE:
-        return "Aperte o botão vermelho para chamar o garçom à sua mesa!";
+        return "Call the waiter by pressing the red button!";
       case SpeakState.PLAYER_CAN_SPEAK:
-        return "Aperte A para falar.";
+        return "Press A to talk.";
       case SpeakState.PLAYER_SPEAKING:
-        return "Ouvindo...";
+        return "Listening...";
       case SpeakState.WAITER_SPEAKING:
-        return "Garçom está falando...";
+        return "Waiter speaking...";
       case SpeakState.WAITING_WAITER:
-        return "Processando...";
+        return "Processing...";
       default:
         return "...";
     }
@@ -117,5 +117,12 @@ public class RestaurantOrder : BaseManager<RestaurantOrder>
       toReturn += $"So, the total charge will be {GetBill()} dollars.";
     }
     return toReturn;
+  }
+  public void Clear()
+  {
+    currentOrderState = OrderState.GREETING;
+    currentSpeakState = SpeakState.NONE;
+    totalOrder.Clear();
+    prompt = new();
   }
 }

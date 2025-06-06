@@ -39,4 +39,5 @@ public sealed class EventManager {
     public EventHandler<string> OnPlayerFinishedSpeaking;
     public EventHandler<string> OnOpenAIResponseStay;
     public EventHandler<string> OnOpenAIResponseLeave;
+    public EventHandler OnDropFoodOnTable;
 }
