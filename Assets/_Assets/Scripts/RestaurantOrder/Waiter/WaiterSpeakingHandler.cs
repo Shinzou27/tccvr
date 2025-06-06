@@ -68,7 +68,7 @@ public class WaiterSpeakingHandler : MonoBehaviour
       case RestaurantOrder.OrderState.ON_ORDER:
         dialogue = "Apologies for the wait. Here is you order. Do you want anything more?";
         break;
-      case RestaurantOrder.OrderState.WAITING_PAYMENT:
+      case RestaurantOrder.OrderState.ON_PAYMENT:
         string bill = RestaurantOrder.Instance.GetBillDetails();
         dialogue = "Ok, so, here is your bill. " + bill;
         break;

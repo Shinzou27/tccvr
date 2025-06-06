@@ -6,7 +6,7 @@ public class RestaurantOrder : BaseManager<RestaurantOrder>
   public List<Table> tables;
   public Prompt prompt;
   public List<AudioClip> audios;
-  public enum OrderState { GREETING, ON_ORDER, WAITING_PAYMENT, PAYMENT_DONE }
+  public enum OrderState { GREETING, ON_ORDER, ON_PAYMENT, PAYMENT_DONE }
   public enum SpeakState { NONE, PLAYER_CAN_SPEAK, WAITING_WAITER, WAITER_SPEAKING, PLAYER_SPEAKING }
   private SpeakState currentSpeakState;
   private OrderState currentOrderState;
