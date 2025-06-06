@@ -431,7 +431,7 @@ AnimatorController:
         type: 3}
     - serializedVersion: 2
       m_State: {fileID: 4139942693197734148}
-      m_Motion: {fileID: -8067411897571314548, guid: 347903faa93e0e84b80c0210437e3d96,
+      m_Motion: {fileID: 116888833151238865, guid: 347903faa93e0e84b80c0210437e3d96,
         type: 3}
     - serializedVersion: 2
       m_State: {fileID: -3326521017785770657}
@@ -467,7 +467,7 @@ AnimatorController:
         type: 3}
     - serializedVersion: 2
       m_State: {fileID: 4139942693197734148}
-      m_Motion: {fileID: -8067411897571314548, guid: 347903faa93e0e84b80c0210437e3d96,
+      m_Motion: {fileID: 116888833151238865, guid: 347903faa93e0e84b80c0210437e3d96,
         type: 3}
     - serializedVersion: 2
       m_State: {fileID: 0}
@@ -695,8 +695,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: -8067411897571314548, guid: 347903faa93e0e84b80c0210437e3d96,
-    type: 3}
+  m_Motion: {fileID: 116888833151238865, guid: 347903faa93e0e84b80c0210437e3d96, type: 3}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 

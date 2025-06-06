@@ -17,5 +17,9 @@ public class FoodTrayTransporter : MonoBehaviour
     Quaternion rotationBeforeTransport = transform.localRotation;
     transform.SetParent(destination);
     transform.SetLocalPositionAndRotation(Vector3.zero, rotationBeforeTransport);
+    if (destination.TryGetComponent(out MeshRenderer renderer))
+    {
+      renderer.enabled = !GetComponent<FoodInfo>().NeedToHidePlate();
+    }
   }
 }

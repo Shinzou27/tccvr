@@ -30,7 +30,15 @@ public class FoodOrderIntentHandler : MonoBehaviour
       if (go != null)
       {
         GameObject food = Instantiate(go, tray);
-        food.GetComponent<FoodTrayTransporter>().destination = plate;
+        FoodInfo foodInfo = food.GetComponent<FoodInfo>();
+        if (foodInfo.IsDrinkable())
+        {
+          food.GetComponent<FoodTrayTransporter>().destination = cup;
+        }
+        else
+        {
+          food.GetComponent<FoodTrayTransporter>().destination = plate;
+        }
       }
     }
 

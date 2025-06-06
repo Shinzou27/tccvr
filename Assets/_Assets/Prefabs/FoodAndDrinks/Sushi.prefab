@@ -683,6 +683,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6634585929135355618}
   - component: {fileID: -5291338296707663156}
+  - component: {fileID: 4973954791058890781}
   m_Layer: 0
   m_Name: Sushi
   m_TagString: Untagged
@@ -730,6 +731,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   destination: {fileID: 0}
+--- !u!114 &4973954791058890781
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6294088810042666072}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a27b4003e18eeb4dbba7a8ab2c18782, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  IsDrink: 0
+  NeedPlate: 0
 --- !u!1 &7995414398485543201
 GameObject:
   m_ObjectHideFlags: 0

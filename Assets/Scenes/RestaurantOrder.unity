@@ -2906,8 +2906,7 @@ MonoBehaviour:
   - prefab: {fileID: 820642723256141279, guid: eb45fdc87edd43c48922e3104f89dfb9, type: 3}
     keyword: beer
     price: 7
-  - prefab: {fileID: 3747430764895501598, guid: 83730998d47f4aa418dbe9933da12102,
-      type: 3}
+  - prefab: {fileID: 69516079555431229, guid: 2286a098ea5df564b81d952e3bac9470, type: 3}
     keyword: juice
     price: 5
   - prefab: {fileID: 3510289262897869168, guid: 76528ebd906a62c4a96537155b7a476b,
@@ -2932,52 +2931,52 @@ PrefabInstance:
     - target: {fileID: 524971919304130693, guid: dada7b8e446857a409b3b3a380ce624d,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.026347825
+      value: -0.0306
       objectReference: {fileID: 0}
     - target: {fileID: 524971919304130693, guid: dada7b8e446857a409b3b3a380ce624d,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.08908387
+      value: 0.0865
       objectReference: {fileID: 0}
     - target: {fileID: 524971919304130693, guid: dada7b8e446857a409b3b3a380ce624d,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.026291937
+      value: 0.0392
       objectReference: {fileID: 0}
     - target: {fileID: 524971919304130693, guid: dada7b8e446857a409b3b3a380ce624d,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: -0.8221218
+      value: -0.812142
       objectReference: {fileID: 0}
     - target: {fileID: 524971919304130693, guid: dada7b8e446857a409b3b3a380ce624d,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.021241076
+      value: -0.008192867
       objectReference: {fileID: 0}
     - target: {fileID: 524971919304130693, guid: dada7b8e446857a409b3b3a380ce624d,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.162833
+      value: 0.20694059
       objectReference: {fileID: 0}
     - target: {fileID: 524971919304130693, guid: dada7b8e446857a409b3b3a380ce624d,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.5451147
+      value: -0.5454668
       objectReference: {fileID: 0}
     - target: {fileID: 524971919304130693, guid: dada7b8e446857a409b3b3a380ce624d,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: 8.198
+      value: 13.831
       objectReference: {fileID: 0}
     - target: {fileID: 524971919304130693, guid: dada7b8e446857a409b3b3a380ce624d,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: -17.091
+      value: -19.692
       objectReference: {fileID: 0}
     - target: {fileID: 524971919304130693, guid: dada7b8e446857a409b3b3a380ce624d,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 65.859
+      value: 65.362
       objectReference: {fileID: 0}
     - target: {fileID: 6204827854435832554, guid: dada7b8e446857a409b3b3a380ce624d,
         type: 3}
@@ -9637,7 +9636,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1645553263
 Transform:
   m_ObjectHideFlags: 0

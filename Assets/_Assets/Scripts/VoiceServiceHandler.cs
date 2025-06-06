@@ -140,7 +140,7 @@ public class VoiceServiceHandler : MonoBehaviour
       timeSinceChanged += Time.deltaTime;
       if (timeSinceChanged >= 5f)
       {
-        TableDisplayManager.Instance.SetLabel("Dica: tente pedir um refrigerante!");
+        TableDisplayManager.Instance.SetLabel("Try to order a sushi!");
       }
       if (!IsRecording && speakButton.action.ReadValue<float>() >= 0.99f)
       {

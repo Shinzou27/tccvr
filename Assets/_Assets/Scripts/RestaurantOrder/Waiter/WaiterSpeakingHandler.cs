@@ -100,7 +100,7 @@ public class WaiterSpeakingHandler : MonoBehaviour
   public IEnumerator WaitToUpdateDisplay()
   {
     float elapsed = 0;
-    TableDisplayManager.Instance.SetLabel("Aguarde o garçom voltar à cozinha.");
+    TableDisplayManager.Instance.SetLabel("Waiter is on movement. Please, wait.");
     TableDisplayManager.Instance.SetWaiterToRed();
     while (elapsed < waiterReturnTime)
     {
